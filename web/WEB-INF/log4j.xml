@@ -29,7 +29,7 @@
 	</appender>
 	
     <root>
-        <priority value="info"/>
+        <priority value="error"/>
         <appender-ref ref="servlet"/>
     </root>
 </log4j:configuration>
