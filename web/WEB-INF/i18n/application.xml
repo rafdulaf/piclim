@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-   Copyright 2009 Anyware Services
+   Copyright 2010 Anyware Services
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,11 +14,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
    -->
-<catalogue xml:lang="en">
-    <message key="APPLICATION_PRODUCT_LABEL">My application name</message>
+<catalogue xml:lang="fr">
+    <message key="APPLICATION_PRODUCT_LABEL">Piclim</message>
 
     <!-- Administration category -->
-    <message key="WORKSPACE_ADMIN_SECTION_SYSTEM_LABEL">System Administration</message>
+    <message key="WORKSPACE_ADMIN_SECTION_SYSTEM_LABEL">Administration système</message>
     <message key="WORKSPACE_ADMIN_SECTION_APPLICATION_LABEL">Application</message>
-    <message key="WORKSPACE_ADMIN_SECTION_USERSMANAGEMENT_LABEL">Users and rights management</message>
+    <message key="WORKSPACE_ADMIN_SECTION_USERSMANAGEMENT_LABEL">Gestion des utilisateurs et des droits</message>
+
 </catalogue>
