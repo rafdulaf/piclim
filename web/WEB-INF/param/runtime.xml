@@ -15,8 +15,8 @@
    --><runtime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ametys.org/Runtime/2.0/runtime.xsd">
     
     <application>
-        <version>@VERSION@</version>
-        <date>@DATE@</date>
+        <version>1.0</version>
+        <date>2014-03-02T20:00</date>
     </application>
     
     <plugins>
@@ -24,7 +24,7 @@
     	</exclude>
     </plugins>
 
-    <workspaces default="site"/>
+    <workspaces default="piclim"/>
     
     <extensions>
     <org.ametys.runtime.authentication.CredentialsProvider>org.ametys.runtime.plugins.core.authentication.FormBased</org.ametys.runtime.authentication.CredentialsProvider><org.ametys.runtime.group.GroupsManager>org.ametys.runtime.plugins.core.group.ModifiableJdbcCore</org.ametys.runtime.group.GroupsManager><org.ametys.runtime.plugins.core.userpref.DefaultUserPreferencesStorage>org.ametys.runtime.plugins.core.userpref.JdbcXmlUserPreferencesStorage</org.ametys.runtime.plugins.core.userpref.DefaultUserPreferencesStorage><org.ametys.runtime.right.RightsManager>org.ametys.runtime.plugins.core.right.HierarchicalProfileBased</org.ametys.runtime.right.RightsManager><org.ametys.runtime.user.UsersManager>org.ametys.runtime.plugins.core.user.CoreModifiableCredentialsAwareJdbc</org.ametys.runtime.user.UsersManager></extensions>
