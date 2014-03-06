@@ -1,7 +1,7 @@
 <?php
 if (!$fp = fopen("/sys/bus/w1/devices/10-00080283b869/w1_slave","r"))
 {
-  echo "Impossible de lire la sonde de tempÃ©rature";
+  echo "Impossible de lire la sonde de température";
   exit;
 }
 else
@@ -20,9 +20,9 @@ else
 <html lang="fr">
   <head>
     <meta charset="UTF-8"/>
-    <title>TempÃ©rature de la piÃ¨ce</title>
+    <title>Température de la pièce</title>
   </head>
   <body>
-    <h1>La tempÃ©rature de la piÃ¨ce est de <?php echo round($regs[1]/100)/10 ?>Â°C.</h1>
+    <h1>La température de la pièce est de <?php echo round($regs[1]/100)/10 ?>°C.</h1>
   </body>
 </html>
