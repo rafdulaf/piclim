@@ -5,7 +5,7 @@
     {
         $temp = getTemperature();
     }
-    catch (e)
+    catch (Exception e)
     {
         $temp = "XX.X";
     }
