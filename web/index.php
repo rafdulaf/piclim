@@ -1,4 +1,5 @@
 <?php
+    include '../src/authentication.php';
     include '../src/sonde.php';
     
     try
@@ -7,7 +8,7 @@
     }
     catch (Exception $e)
     {
-        $temp = "XX.X";
+        $temp = "???";
     }
 ?>
 
