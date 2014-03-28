@@ -6,6 +6,8 @@
 
     function getTemperature()
     {
+        global $SONDE;
+    
         if (!$fp = fopen("/sys/bus/w1/devices/" . $SONDE . "/w1_slave", "r"))
         {
             throw new Exception('Can not get current temperature');
