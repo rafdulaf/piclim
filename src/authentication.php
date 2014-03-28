@@ -2,6 +2,15 @@
     session_start();
     if(!isset($_SESSION['user']))
     {
-        header("location:login.html");
+?>
+        { authenticated: false }
+<?php
+    }
+    else
+    {
+?>
+        { authenticated: true }
+<?php
     }
 ?>
+    
