@@ -7,6 +7,7 @@
     }
     catch (Exception $e)
     {
+        error_log("Error" . $e);
         $temp = "XX.X";
     }
 ?>
