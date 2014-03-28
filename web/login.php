@@ -1,5 +1,5 @@
 <?php
-    include '../authentication.php';
+    include '../src/authentication.php';
 
     function sendUserInfo()
     {
