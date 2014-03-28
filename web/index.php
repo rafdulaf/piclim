@@ -1,5 +1,14 @@
 <?php
     include '../src/sonde.php';
+    
+    try
+    {
+        $temp = getTemperature();
+    }
+    catch (e)
+    {
+        $temp = "XX.X":
+    }
 ?>
 
 <!doctype html>
@@ -9,6 +18,6 @@
         <title>Température de la pièce</title>
     </head>
     <body>
-        <h1>La température de la pièce est de <?php echo getTemperature(); ?>°C.</h1>
+        <h1>La température de la pièce est de <?php echo $temp; ?>°C.</h1>
     </body>
 </html>
