@@ -7,7 +7,7 @@
     }
     catch (e)
     {
-        $temp = "XX.X":
+        $temp = "XX.X";
     }
 ?>
 
