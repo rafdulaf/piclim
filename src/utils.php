@@ -37,6 +37,11 @@
         
         return false;
     }
+
+    function getAllUsers()
+    {
+        return _sql("SELECT login, fullname, email FROM Users", array()); 
+    }
     
     function _getSalt($login)
     {
