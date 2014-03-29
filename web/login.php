@@ -1,27 +1,21 @@
 <?php
     include '../src/authentication.php';
 
-    function sendUserInfo()
+    if (get_current_user() == null || (isset($_REQUEST['login']) && isset($_REQUEST['password']) && login($_REQUEST['login'], $_REQUEST['password']) == false))
     {
-        echo "{ authenticated: true, login: '" . $_SESSION['user'] . "' }";
-    }
-
-    session_start();
-    if(!isset($_SESSION['user']))
-    {
-        if(isset($_REQUEST['login']) && isset($_REQUEST['password']) && check_login($_REQUEST['login'], $_REQUEST['password']))
-        {
-            $_SESSION['user'] = $_REQUEST['login'];
-            sendUserInfo();
-        }
-        else
-?>
-            { authenticated: false }
-<?php
+            echo "{ authenticate: false }";
     }
     else
     {
-        sendUserInfo();
+        $user = get_current_user();
+        if ($user == null)
+        {
+	        echo "{ initialized: false }";
+        }
+        else
+        {
+            echo "{ authenticate: true, login: '$user['login']', email: '$user['email']', fullname: '$user['fullname']' }";
+        }
     }
 ?>
     

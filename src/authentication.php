@@ -1,19 +1,25 @@
 <?php
     include 'sql.php';
 
-    function check_login($login, $password)
+    /* {login, fullname, email} or null */
+    function get_current_user()
     {
-        $request = "SELECT count(*) FROM users";
+    	session_start();
+    	if(!isset($_SESSION['user']))
+    	{
+			return null;
+    	}
+    	return $_SESSION['user'];
+    }
+    
+    /* returns false if wrong authentication, true if ok or 'empty' if db is empty */
+    function login($login, $password)
+    {
+        $request = "SELECT count(*) FROM Users";
         if (_sql($request) == 0)
         {
             // No login in database means an inscription
-            $salt = rand();
-            $loginP = mysql_real_escape_string($login);
-            $passwordP = mysql_real_escape_string($password);
-            $md5password = md5($salt . $passwordP);
-            $request = "INSERT INTO users(login, password, salt, fullname, email) VALUES('$loginP', '$md5password', '$salt', 'Administrator', 'noemail@noemail.org');
-
-            return $login;
+            return 'empty';
         }
 
         $salt = _getSalt($login);
@@ -24,8 +30,9 @@
             $passwordP = mysql_real_escape_string($password);
             $md5password = md5($salt . $passwordP);
             
-            $request = mysql_query("SELECT login FROM users WHERE login='$loginP' and password='$md5password'");
-            return _sql($request);
+            $request = mysql_query("SELECT login, fullname, email FROM Users WHERE login='$loginP' and password='$md5password'");
+            $_SESSION['user'] = _sql($request);
+            return true;
         }
         else
         {
@@ -37,7 +44,7 @@
     {
         $loginP = mysql_real_escape_string($login);
 
-        $request = mysql_query("SELECT salt FROM users WHERE login='$loginP'");
+        $request = mysql_query("SELECT salt FROM Users WHERE login='$loginP'");
         return _sql($request);
     }
 ?>
