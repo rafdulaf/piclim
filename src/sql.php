@@ -7,8 +7,6 @@
     {
         global $bdd;
         
-        $args = array_map($bdd->quote, $args);
-
         $stmt = $bdd->prepare($request);
         
         if(strrchr($request, 'SELECT'))
