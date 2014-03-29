@@ -2,7 +2,7 @@
     include 'sql.php';
 
     /* {login, fullname, email} or null */
-    function get_current_user()
+    function getCurrentUser()
     {
     	session_start();
     	if(!isset($_SESSION['user']))

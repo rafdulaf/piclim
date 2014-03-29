@@ -1,14 +1,13 @@
 <?php
     include '../src/authentication.php';
 
-    $user = get_current_user();
-    if ($user == null || (isset($_REQUEST['login']) && isset($_REQUEST['password']) && login($_REQUEST['login'], $_REQUEST['password']) == false))
+    if (getCurrentUser() == null || (isset($_REQUEST['login']) && isset($_REQUEST['password']) && login($_REQUEST['login'], $_REQUEST['password']) == false))
     {
             echo "{ authenticate: false }";
     }
     else
     {
-        $user = get_current_user();
+        $user = getCurrentUser();
         if ($user == null)
         {
 	        echo "{ initialized: false }";
