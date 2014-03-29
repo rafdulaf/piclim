@@ -15,10 +15,9 @@
     /* returns false if wrong authentication, true if ok or 'empty' if db is empty */
     function login($login, $password)
     {
-    	echo _sql("SELECT count(*) FROM Users")[0][0];
-        if (_sql("SELECT count(*) FROM Users", array())[0] == 0)
+        if (_sql("SELECT count(*) FROM Users", array())[0][0] == 0)
         {
-            // No login in database means an inscription
+            // No login in database means an inscription is required
             return 'empty';
         }
 
@@ -27,19 +26,29 @@
         {
             $md5password = md5($salt . $password);
             
-            $_SESSION['user'] = _sql("SELECT login, fullname, email FROM Users WHERE login=:login and password=:password", 
+            $result = _sql("SELECT login, fullname, email FROM Users WHERE login=:login and password=:password", 
             							array(':login' => $login, ':password' => $md5password));
-            return true;
+            if (count($result) == 1)
+            {
+            	$_SESSION['user'] = $result[0][0]; 
+            	return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        
+        return false;
     }
     
     function _getSalt($login)
     {
-        return _sql("SELECT salt FROM Users WHERE login=:login",
+    	$result = _sql("SELECT salt FROM Users WHERE login=:login",
             		array(':login' => $login));
+    	if (count($result) == 1)
+    	{
+        	return $result[0][0];
+    	} 
+    	else
+    	{
+    		return false;
+    	}
     }
 ?>
