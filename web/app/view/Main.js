@@ -10,27 +10,84 @@ Ext.define('PiClim.view.Main', {
 
         items: [
             {
-                title: 'Welcome',
-                iconCls: 'home',
+                title: I18n.MAIN_WELCOME_TITLE_SHORT,
+                iconCls: 'user',
 
                 styleHtmlContent: true,
                 scrollable: true,
 
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
+        		layout: {
+        			type: 'vbox',
+        		},
+        		
+                items: [
+                    {
+                    	docked: 'top',
+                    	xtype: 'titlebar',
+                    	title: I18n.MAIN_WELCOME_TITLE_LONG
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_WELCOME_TEXT
+                	},
+                	{
+                		flex: 1,
+                		xtype: 'container',
+                		layout: {
+                			type: 'vbox',
+                			align: 'center',
+                			pack: 'center'
+                		},
+                		
+                		defaults: {
+                			maxWidth: '720px',
+                			width: '100%'
+                		},
 
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
+                		items: [
+                		        {
+                		        	xtype: 'titlebar',
+                		        	title: I18n.MAIN_WELCOME_LOGINPANEL_TITLE
+                		        },
+                		        {
+                		        	xtype: 'textfield',
+                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_LABEL,
+                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_HOLDER,
+                		        	name: 'url'
+                		        },
+                		        {
+                		        	xtype: 'textfield',
+                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_LABEL,
+                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_HOLDER,
+                		        	name: 'login'
+                		        },
+                		        {
+                		        	xtype: 'passwordfield',
+                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_LABEL,
+                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_HOLDER,
+                		        	name: 'password'
+                		        },
+                		        {
+                		        	xtype: 'component',
+                		        	height: 10
+                		        },
+                		        {
+                		        	xtype: 'button',
+                		        	text: I18n.MAIN_WELCOME_LOGINPANEL_CONNECT_LABEL,
+                		        }
+                		]
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_WELCOME_FOOTER
+                	}
+                ],
+
             },
             {
-                title: 'Get Started',
-                iconCls: 'action',
+                title: 'Settings',
+                iconCls: 'settings',
+                hidden: true,
 
                 items: [
                     {
