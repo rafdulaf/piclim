@@ -1,7 +1,9 @@
 <?php
     include '../src/authentication.php';
 
-    if (getCurrentUser() == null || (isset($_REQUEST['login']) && isset($_REQUEST['password']) && login($_REQUEST['login'], $_REQUEST['password']) == false))
+    if (getCurrentUser() == null 
+        && ((!isset($_REQUEST['login']) || !isset($_REQUEST['password'])) 
+            || (isset($_REQUEST['login']) && isset($_REQUEST['password']) && login($_REQUEST['login'], $_REQUEST['password']) == false)))
     {
             echo "{ authenticate: false }";
     }
