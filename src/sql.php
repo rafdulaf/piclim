@@ -1,4 +1,5 @@
 <?php
+echo 'mysql:host='.$BDD_host.';dbname='.$BDD_db
     $bdd = new PDO('mysql:host='.$BDD_host.';dbname='.$BDD_db, $BDD_user, $BDD_pass);
 
     function _sql($request)
