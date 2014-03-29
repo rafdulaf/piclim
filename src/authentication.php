@@ -17,6 +17,7 @@
     {
         if (_sql("SELECT count(*) FROM Users", array()) == 0)
         {
+        	echo "empty";
             // No login in database means an inscription
             return 'empty';
         }
