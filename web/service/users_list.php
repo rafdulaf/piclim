@@ -1,4 +1,4 @@
 <?php
-    include '../src/authentication.php';
+    include '../../src/authentication.php';
 
 ?>
