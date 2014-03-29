@@ -14,7 +14,7 @@
         }
         else
         {
-            echo "{ authenticate: true, login: '$user['login']', email: '$user['email']', fullname: '$user['fullname']' }";
+            echo "{ authenticate: true, login: '" . $user['login'] . "', email: '" . $user['email'] . "', fullname: '" . $user['fullname'] . "' }";
         }
     }
 ?>
