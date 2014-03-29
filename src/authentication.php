@@ -15,7 +15,7 @@
     /* returns false if wrong authentication, true if ok or 'empty' if db is empty */
     function login($login, $password)
     {
-    	echo _sql("SELECT count(*) FROM Users");
+    	echo _sql("SELECT count(*) FROM Users")[0];
         if (_sql("SELECT count(*) FROM Users", array())[0] == 0)
         {
             // No login in database means an inscription
