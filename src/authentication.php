@@ -3,7 +3,7 @@
 	
 	if (getCurrentUser() == null)
 	{
-		header("HTTP/1.0 403 Forbidden" );
+		echo "{ failure: true }";
 		exit;
 	}
 ?>
