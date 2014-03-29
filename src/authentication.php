@@ -15,8 +15,7 @@
     /* returns false if wrong authentication, true if ok or 'empty' if db is empty */
     function login($login, $password)
     {
-        $request = "SELECT count(*) FROM Users";
-        if (_sql($request) == 0)
+        if (_sql("SELECT count(*) FROM Users", array()) == 0)
         {
             // No login in database means an inscription
             return 'empty';
@@ -25,13 +24,10 @@
         $salt = _getSalt($login);
         if ($salt)
         {
-            $loginP = mysql_real_escape_string($login);
+            $md5password = md5($salt . $password);
             
-            $passwordP = mysql_real_escape_string($password);
-            $md5password = md5($salt . $passwordP);
-            
-            $request = mysql_query("SELECT login, fullname, email FROM Users WHERE login='$loginP' and password='$md5password'");
-            $_SESSION['user'] = _sql($request);
+            $_SESSION['user'] = _sql("SELECT login, fullname, email FROM Users WHERE login=:login and password=:password", 
+            							array(':login' => $login, ':password' => $md5password));
             return true;
         }
         else
@@ -42,9 +38,7 @@
     
     function _getSalt($login)
     {
-        $loginP = mysql_real_escape_string($login);
-
-        $request = mysql_query("SELECT salt FROM Users WHERE login='$loginP'");
-        return _sql($request);
+        return _sql("SELECT salt FROM Users WHERE login=:login",
+            		array(':login' => $login));
     }
 ?>
