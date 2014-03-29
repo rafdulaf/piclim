@@ -1,5 +1,5 @@
 <?php
-    include '../src/authentication.php';
+    include '../src/utils.php';
 
     if (getCurrentUser() == null 
         && ((!isset($_REQUEST['login']) || !isset($_REQUEST['password'])) 
