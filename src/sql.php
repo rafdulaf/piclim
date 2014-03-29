@@ -7,29 +7,18 @@
     {
         global $bdd;
         
+        $args = array_map($bdd->quote, $args);
+
         $stmt = $bdd->prepare($request);
         
         if(strrchr($request, 'SELECT'))
         {
-            $req = $stmt->query($args);
-        }
-        else
-        {
             $stmt->execute($args); 
-        }
-        
-        
-        if(!empty($req))
-        {
-            while ($data = $req->fetch())
-            {
-                $res[] = $data;
-            }
-            return $res;
+            return $stmt->fetchAll();
         }
         else
         {
-            return false; 
-        }
+            return $stmt->execute($args); 
+        }    
     }
 ?>
