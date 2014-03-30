@@ -1,4 +1,5 @@
 <?php
+	include 'devmode.php';
     include 'sql.php';
 
     /* {login, fullname, email} or null */
