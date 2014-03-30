@@ -2,6 +2,7 @@
     include '../../src/utils.php';
 
     header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
 
     if (getCurrentUser() == null 
         && ((!isset($_REQUEST['login']) || !isset($_REQUEST['password'])) 
