@@ -53,18 +53,21 @@ Ext.define('PiClim.view.Main', {
                 		        	xtype: 'textfield',
                 		        	label: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_LABEL,
                 		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_HOLDER,
+                		        	autoComplete: true,
                 		        	name: 'url'
                 		        },
                 		        {
                 		        	xtype: 'textfield',
                 		        	label: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_LABEL,
                 		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_HOLDER,
+                		        	autoComplete: true,
                 		        	name: 'login'
                 		        },
                 		        {
                 		        	xtype: 'passwordfield',
                 		        	label: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_LABEL,
                 		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_HOLDER,
+                		        	autoComplete: true,
                 		        	name: 'password'
                 		        },
                 		        {
@@ -74,6 +77,7 @@ Ext.define('PiClim.view.Main', {
                 		        {
                 		        	xtype: 'button',
                 		        	text: I18n.MAIN_WELCOME_LOGINPANEL_CONNECT_LABEL,
+                		        	disabled: true
                 		        }
                 		]
                 	},

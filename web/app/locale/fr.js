@@ -10,5 +10,7 @@ I18n = {
 	MAIN_WELCOME_LOGINPANEL_LOGIN_HOLDER: "Saisir votre identifiant",
 	MAIN_WELCOME_LOGINPANEL_PASSWORD_LABEL: "Mot de passe",
 	MAIN_WELCOME_LOGINPANEL_PASSWORD_HOLDER: "Saisir votre mot de passe",
-	MAIN_WELCOME_LOGINPANEL_CONNECT_LABEL: "Connexion"
+	MAIN_WELCOME_LOGINPANEL_CONNECT_LABEL: "Connexion",
+	MAIN_WELCOME_LOGINPANEL_CONNECT_FAILURE_TITLE: "Echec de connexion",
+	MAIN_WELCOME_LOGINPANEL_CONNECT_FAILURE_TEXT: "Impossible de joindre le serveur. Vérifier l'adresse et recommencez."
 };
