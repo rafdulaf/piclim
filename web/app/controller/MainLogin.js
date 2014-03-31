@@ -61,9 +61,10 @@ Ext.define('PiClim.controller.MainLogin', {
         {
         	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TITLE, I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT + PiClim.app.version + I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT2 + object.version + I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT3);
         }
-        else if (object.initialized)
+        else if (!object.initialized)
         {
-        	
+        	// TODO
+        	alert("first connection")
         }
         else
         {
