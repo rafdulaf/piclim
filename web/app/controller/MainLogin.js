@@ -10,9 +10,10 @@ Ext.define('PiClim.controller.MainLogin', {
             serverFieldServer: 'main [name=server] [name=url]',
             serverButton: 'main [name=server] button',
             
-            loginFieldLogin: 'main [name=login]',
-            loginFieldPassword: 'main [name=password]',
-            loginButton: 'main button'
+            userTab: 'main [name=user]',
+            userFieldLogin: 'main [name=user] [name=login]',
+            userFieldPassword: 'main [name=user] [name=password]',
+            userButtonLogin: 'main [name=user] button'
         },
         control: {
         	'serverButton': 
@@ -35,12 +36,15 @@ Ext.define('PiClim.controller.MainLogin', {
     /** url change */
     onServerFieldServerChange: function(field, newValue, oldValue, eOpts)
     {
+    	this.getUserTab().disable();
     	this.getServerButton().setDisabled(!/^http(s)?:\/\/[^:]+/i.test(newValue));
     },
     
     /** When user click on login */
     onServerLogin: function(button, e, eOpts)
     {
+    	this.getUserTab().disable();
+
     	var url = this.getServerFieldServer().getValue();
 
     	Ext.Ajax.request({
@@ -52,13 +56,24 @@ Ext.define('PiClim.controller.MainLogin', {
     
     _loginCb: function(response)
     {
-        var text = response.responseText;
-    	alert(text);
+        var object = Ext.decode(response.responseText);
+        if (object.version != PiClim.app.version)
+        {
+        	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TITLE, I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT + PiClim.app.version + I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT2 + object.version + I18n.MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT3);
+        }
+        else if (object.initialized)
+        {
+        	
+        }
+        else
+        {
+        	this.getUserTab().enable();
+        }
     },
     
     _loginFail: function()
     {
-    	Ext.Msg.alert(I18n.MAIN_WELCOME_LOGINPANEL_CONNECT_FAILURE_TITLE, I18n.MAIN_WELCOME_LOGINPANEL_CONNECT_FAILURE_TEXT);
+    	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT_FAILURE_TITLE, I18n.MAIN_SERVER_CONNECT_FAILURE_TEXT);
     }
     
 });

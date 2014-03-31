@@ -13,6 +13,10 @@ I18n = {
 	MAIN_SERVER_LOGINPANEL_CONNECT_LABEL: "Connexion",
 	MAIN_SERVER_CONNECT_FAILURE_TITLE: "Echec de connexion",
 	MAIN_SERVER_CONNECT_FAILURE_TEXT: "Impossible de joindre le serveur. Vérifier l'adresse et recommencez.",
+	MAIN_SERVER_CONNECT_VERSIONFAILURE_TITLE: "Versions incompatibles",
+	MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT: "La version de cette application (",
+	MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT2: ") n'est pas compatible avec la version de votre serveur (",
+	MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT3: ")",
 
 	MAIN_USER_TITLE_SHORT: "Utilisateur",
 	MAIN_USER_TITLE_LONG: "Identifiants de l'utilisateur",

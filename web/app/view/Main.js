@@ -100,6 +100,8 @@ Ext.define('PiClim.view.Main', {
             {
                 title: I18n.MAIN_USER_TITLE_SHORT,
                 iconCls: 'user',
+                name: 'user',
+                disabled: true,
 
                 styleHtmlContent: true,
                 scrollable: false,

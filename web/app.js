@@ -12,6 +12,7 @@
 
 Ext.application({
     name: 'PiClim',
+    version: '0.1.0',
 
     requires: [
         'Ext.MessageBox'
