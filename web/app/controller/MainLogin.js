@@ -7,20 +7,22 @@ Ext.define('PiClim.controller.MainLogin', {
     
     config: {
         refs: {
-            loginFieldServer: 'main [name=url]',
+            serverFieldServer: 'main [name=server] [name=url]',
+            serverButton: 'main [name=server] button',
+            
             loginFieldLogin: 'main [name=login]',
             loginFieldPassword: 'main [name=password]',
             loginButton: 'main button'
         },
         control: {
-        	'loginButton': 
+        	'serverButton': 
         	{
-        		'tap': 'onLogin'
+        		'tap': 'onServerLogin'
         	},
         	
-        	'loginFieldServer':
+        	'serverFieldServer':
         	{
-        		'change': 'onLoginFieldServerChange'
+        		'change': 'onServerFieldServerChange'
         	}
         }
     },
@@ -31,24 +33,18 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     
     /** url change */
-    onLoginFieldServerChange: function(field, newValue, oldValue, eOpts)
+    onServerFieldServerChange: function(field, newValue, oldValue, eOpts)
     {
-    	this.getLoginButton().setDisabled(!/^http(s)?:\/\/[^:]+/i.test(newValue));
+    	this.getServerButton().setDisabled(!/^http(s)?:\/\/[^:]+/i.test(newValue));
     },
     
     /** When user click on login */
-    onLogin: function(button, e, eOpts)
+    onServerLogin: function(button, e, eOpts)
     {
-    	var url = this.getLoginFieldServer().getValue();
-    	var login = this.getLoginFieldLogin().getValue();
-    	var password = this.getLoginFieldPassword().getValue();
+    	var url = this.getServerFieldServer().getValue();
 
     	Ext.Ajax.request({
-    	    url: url + "/service/login.php",
-    	    params: {
-    	        login: login,
-    	        password: password
-    	    },
+    	    url: url + "/service/version.php",
     	    success: this._loginCb,
     	    failure: this._loginFail
     	});

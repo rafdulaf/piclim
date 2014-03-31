@@ -11,10 +11,10 @@ Ext.define('PiClim.view.Main', {
         items: [
             {
                 title: I18n.MAIN_WELCOME_TITLE_SHORT,
-                iconCls: 'user',
+                iconCls: 'home',
 
                 styleHtmlContent: true,
-                scrollable: true,
+                scrollable: false,
 
         		layout: {
         			type: 'vbox',
@@ -29,6 +29,32 @@ Ext.define('PiClim.view.Main', {
                 	{
                 		xtype: 'component',
                 		html: I18n.MAIN_WELCOME_TEXT
+                	}
+                ],
+
+            },
+            
+            {
+                title: I18n.MAIN_SERVER_TITLE_SHORT,
+                iconCls: 'server',
+                name: 'server',
+
+                styleHtmlContent: true,
+                scrollable: false,
+
+        		layout: {
+        			type: 'vbox',
+        		},
+        		
+                items: [
+                    {
+                    	docked: 'top',
+                    	xtype: 'titlebar',
+                    	title: I18n.MAIN_SERVER_TITLE_LONG
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_SERVER_TEXT
                 	},
                 	{
                 		flex: 1,
@@ -47,26 +73,81 @@ Ext.define('PiClim.view.Main', {
                 		items: [
                 		        {
                 		        	xtype: 'titlebar',
-                		        	title: I18n.MAIN_WELCOME_LOGINPANEL_TITLE
+                		        	title: I18n.MAIN_SERVER_LOGINPANEL_TITLE
                 		        },
                 		        {
                 		        	xtype: 'textfield',
-                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_LABEL,
-                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_SERVERNAME_HOLDER,
+                		        	label: I18n.MAIN_SERVER_LOGINPANEL_SERVERNAME_LABEL,
+                		        	placeHolder: I18n.MAIN_SERVER_LOGINPANEL_SERVERNAME_HOLDER,
                 		        	autoComplete: true,
                 		        	name: 'url'
                 		        },
                 		        {
+                		        	xtype: 'component',
+                		        	height: 10
+                		        },
+                		        {
+                		        	xtype: 'button',
+                		        	text: I18n.MAIN_SERVER_LOGINPANEL_CONNECT_LABEL,
+                		        	disabled: true
+                		        }
+                		]
+                	}
+                ],
+
+            },
+
+            {
+                title: I18n.MAIN_USER_TITLE_SHORT,
+                iconCls: 'user',
+
+                styleHtmlContent: true,
+                scrollable: false,
+
+        		layout: {
+        			type: 'vbox',
+        		},
+        		
+                items: [
+                    {
+                    	docked: 'top',
+                    	xtype: 'titlebar',
+                    	title: I18n.MAIN_USER_TITLE_LONG
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_USER_TEXT
+                	},
+                	{
+                		flex: 1,
+                		xtype: 'container',
+                		layout: {
+                			type: 'vbox',
+                			align: 'center',
+                			pack: 'center'
+                		},
+                		
+                		defaults: {
+                			maxWidth: '720px',
+                			width: '100%'
+                		},
+
+                		items: [
+                		        {
+                		        	xtype: 'titlebar',
+                		        	title: I18n.MAIN_USER_LOGINPANEL_TITLE
+                		        },
+                		        {
                 		        	xtype: 'textfield',
-                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_LABEL,
-                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_LOGIN_HOLDER,
+                		        	label: I18n.MAIN_USER_LOGINPANEL_LOGIN_LABEL,
+                		        	placeHolder: I18n.MAIN_USER_LOGINPANEL_LOGIN_HOLDER,
                 		        	autoComplete: true,
                 		        	name: 'login'
                 		        },
                 		        {
                 		        	xtype: 'passwordfield',
-                		        	label: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_LABEL,
-                		        	placeHolder: I18n.MAIN_WELCOME_LOGINPANEL_PASSWORD_HOLDER,
+                		        	label: I18n.MAIN_USER_LOGINPANEL_PASSWORD_LABEL,
+                		        	placeHolder: I18n.MAIN_USER_LOGINPANEL_PASSWORD_HOLDER,
                 		        	autoComplete: true,
                 		        	name: 'password'
                 		        },
@@ -76,18 +157,15 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'button',
-                		        	text: I18n.MAIN_WELCOME_LOGINPANEL_CONNECT_LABEL,
+                		        	text: I18n.MAIN_USER_LOGINPANEL_CONNECT_LABEL,
                 		        	disabled: true
                 		        }
                 		]
-                	},
-                	{
-                		xtype: 'component',
-                		html: I18n.MAIN_WELCOME_FOOTER
                 	}
                 ],
 
             },
+            
             {
                 title: 'Settings',
                 iconCls: 'settings',

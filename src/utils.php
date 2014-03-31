@@ -13,13 +13,18 @@
         return $_SESSION['user'];
     }
     
-    /* returns false if wrong authentication, true if ok or 'empty' if db is empty */
+    function isUserBaseInitialized()
+    {
+    	return (_sql("SELECT count(*) FROM Users", array())[0][0] > 0);
+    }
+    
+    /* returns false if wrong authentication or db empty, true if ok or */
     function login($login, $password)
     {
-        if (_sql("SELECT count(*) FROM Users", array())[0][0] == 0)
+        if (!isUserBaseInitialized())
         {
             // No login in database means an inscription is required
-            return 'empty';
+            return false;
         }
 
         $salt = _getSalt($login);
