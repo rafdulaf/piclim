@@ -12,7 +12,7 @@ I18n = {
 	MAIN_SERVER_LOGINPANEL_SERVERNAME_HOLDER: "https://piclim.serveur.com:8443",
 	MAIN_SERVER_LOGINPANEL_CONNECT_LABEL: "Connexion",
 	MAIN_SERVER_CONNECT_FAILURE_TITLE: "Echec de connexion",
-	MAIN_SERVER_CONNECT_FAILURE_TEXT: "Impossible de joindre le serveur. Vérifier l'adresse et recommencez.",
+	MAIN_SERVER_CONNECT_FAILURE_TEXT: "Impossible de joindre le serveur. Vérifiez l'adresse et recommencez.",
 	MAIN_SERVER_CONNECT_VERSIONFAILURE_TITLE: "Versions incompatibles",
 	MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT: "La version de cette application (",
 	MAIN_SERVER_CONNECT_VERSIONFAILURE_TEXT2: ") n'est pas compatible avec la version de votre serveur (",
@@ -27,6 +27,22 @@ I18n = {
 	MAIN_USER_LOGINPANEL_PASSWORD_LABEL: "Mot de passe",
 	MAIN_USER_LOGINPANEL_PASSWORD_HOLDER: "Saisir votre mot de passe",
 	MAIN_USER_LOGINPANEL_CONNECT_LABEL: "Connexion",
-	
+
+	MAIN_USERADD_TITLE_SHORT: "Création",
+	MAIN_USERADD_TITLE_LONG: "Identifiants de l'utilisateur à créer",
+	MAIN_USERADD_TEXT: "Votre serveur étant nouvellement installé, la première étape consiste à vous créer un compte utilisateur pour le sécuriser.<br/>Saisissez les informations du compte à créer :",
+	MAIN_USERADD_CREATIONPANEL_TITLE: "Nouveau compte",
+	MAIN_USERADD_CREATIONPANEL_LOGIN_LABEL: "Identifiant",
+	MAIN_USERADD_CREATIONPANEL_LOGIN_HOLDER: "Saisir l'identifiant",
+	MAIN_USERADD_CREATIONPANEL_PASSWORD_LABEL: "Mot de passe",
+	MAIN_USERADD_CREATIONPANEL_PASSWORD_HOLDER: "Saisir le mot de passe",
+	MAIN_USERADD_CREATIONPANEL_CONFIRMPASSWORD_LABEL: "Confirmation",
+	MAIN_USERADD_CREATIONPANEL_CONFIRMPASSWORD_HOLDER: "Confirmation du mot de passe",
+	MAIN_USERADD_CREATIONPANEL_EMAIL_LABEL: "Email",
+	MAIN_USERADD_CREATIONPANEL_EMAIL_HOLDER: "Saisir votre adresse mail",
+	MAIN_USERADD_CREATIONPANEL_CREATE_LABEL: "Création",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TITLE: "Echec de création",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT: "La création de l'utilisateur a échoué.",
+
 	null: null
 };

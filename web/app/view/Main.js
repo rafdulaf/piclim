@@ -36,7 +36,7 @@ Ext.define('PiClim.view.Main', {
             
             {
                 title: I18n.MAIN_SERVER_TITLE_SHORT,
-                iconCls: 'server',
+                iconCls: 'download',
                 name: 'server',
 
                 styleHtmlContent: true,
@@ -98,10 +98,91 @@ Ext.define('PiClim.view.Main', {
             },
 
             {
+                title: I18n.MAIN_USERADD_TITLE_SHORT,
+                iconCls: 'user',
+                name: 'firstuser',
+                hidden: true,
+
+                styleHtmlContent: true,
+                scrollable: false,
+
+        		layout: {
+        			type: 'vbox',
+        		},
+        		
+                items: [
+                    {
+                    	docked: 'top',
+                    	xtype: 'titlebar',
+                    	title: I18n.MAIN_USERADD_TITLE_LONG
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_USERADD_TEXT
+                	},
+                	{
+                		flex: 1,
+                		xtype: 'container',
+                		layout: {
+                			type: 'vbox',
+                			align: 'center',
+                			pack: 'center'
+                		},
+                		
+                		defaults: {
+                			maxWidth: '720px',
+                			width: '100%'
+                		},
+
+                		items: [
+                		        {
+                		        	xtype: 'titlebar',
+                		        	title: I18n.MAIN_USERADD_CREATIONPANEL_TITLE
+                		        },
+                		        {
+                		        	xtype: 'textfield',
+                		        	label: I18n.MAIN_USERADD_CREATIONPANEL_LOGIN_LABEL,
+                		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_LOGIN_HOLDER,
+                		        	name: 'login'
+                		        },
+                		        {
+                		        	xtype: 'passwordfield',
+                		        	label: I18n.MAIN_USERADD_CREATIONPANEL_PASSWORD_LABEL,
+                		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_PASSWORD_HOLDER,
+                		        	name: 'password'
+                		        },
+                		        {
+                		        	xtype: 'passwordfield',
+                		        	label: I18n.MAIN_USERADD_CREATIONPANEL_CONFIRMPASSWORD_LABEL,
+                		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_CONFIRMPASSWORD_HOLDER,
+                		        	name: 'confirmpassword'
+                		        },
+                		        {
+                		        	xtype: 'textfield',
+                		        	label: I18n.MAIN_USERADD_CREATIONPANEL_EMAIL_LABEL,
+                		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_EMAIL_HOLDER,
+                		        	name: 'email'
+                		        },
+                		        {
+                		        	xtype: 'component',
+                		        	height: 10
+                		        },
+                		        {
+                		        	xtype: 'button',
+                		        	text: I18n.MAIN_USERADD_CREATIONPANEL_CREATE_LABEL,
+                		        	disabled: true
+                		        }
+                		]
+                	}
+                ],
+
+            },
+            
+            {
                 title: I18n.MAIN_USER_TITLE_SHORT,
                 iconCls: 'user',
                 name: 'user',
-                disabled: true,
+                hidden: true,
 
                 styleHtmlContent: true,
                 scrollable: false,
@@ -159,7 +240,7 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'button',
-                		        	text: I18n.MAIN_USER_LOGINPANEL_CONNECT_LABEL,
+                		        	text: I18n.MAIN_USER_LOGINPANEL_LOGIN_LABEL,
                 		        	disabled: true
                 		        }
                 		]
@@ -167,7 +248,7 @@ Ext.define('PiClim.view.Main', {
                 ],
 
             },
-            
+
             {
                 title: 'Settings',
                 iconCls: 'settings',
