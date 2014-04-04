@@ -49,6 +49,8 @@ I18n = {
 	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT: "La création est impossible car le serveur est déjà initialisé.",
 	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE: "Echec de création",
 	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT: "La création de l'utilisateur a échoué.",
+	MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TITLE: "Création réussie",
+	MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TEXT: "Le compte utilisateur a été créé avec succès. Vous pouvez maintenant vous identifier normalement.",
 
 	null: null
 };

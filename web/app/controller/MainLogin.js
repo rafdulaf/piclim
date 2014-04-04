@@ -27,24 +27,18 @@ Ext.define('PiClim.controller.MainLogin', {
             userButtonLogin: 'main [name=user] button'
         },
         control: {
-        	'serverButton': 
-        	{
-        		'tap': 'onServerLogin'
-        	},
-        	
-        	'serverFieldServer':
-        	{
-        		'change': 'onServerFieldServerChange'
-        	},
+        	'serverButton': { 'tap': 'onServerVersion' },
+        	'serverFieldServer': { 'change': 'onServerFieldServerChange' },
         	
         	'firstUserFieldLogin': { 'change': 'onFirstUserFieldsChange' },
         	'firstUserFieldPassword': { 'change': 'onFirstUserFieldsChange' },
         	'firstUserFieldConfirmPassword': { 'change': 'onFirstUserFieldsChange' },
         	'firstUserFieldEmail': { 'change': 'onFirstUserFieldsChange' },
-        	'firstUserButtonCreate': 
-        	{
-        		'tap': 'onFirstUserCreation'
-        	}
+        	'firstUserButtonCreate': { 'tap': 'onFirstUserCreation' },
+        	
+        	'userFieldLogin': { 'change': 'onUserFieldsChange' },
+        	'userFieldPassword': { 'change': 'onUserFieldsChange' },
+        	'userButtonLogin': { 'tap': 'onUserCreation' }
         }
     },
     
@@ -62,7 +56,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     
     /** When user click on login */
-    onServerLogin: function(button, e, eOpts)
+    onServerVersion: function(button, e, eOpts)
     {
     	this.getMain().getTabBar().getItems().get(2).hide();
     	this.getMain().getTabBar().getItems().get(3).hide();
@@ -145,19 +139,32 @@ Ext.define('PiClim.controller.MainLogin', {
     	{
         	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT);
     	}
-    	else //if (object.success == true)
+    	else if (object.success == true)
     	{
-    		alert(object.success)
+        	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TEXT);
+        	this.getMain().getTabBar().getItems().get(2).hide();
+        	this.getMain().getTabBar().getItems().get(3).show();
+        	this.getMain().setActiveItem(3);
     	}
-    	//else
-    	//{
-        //	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT);
-    	//}
+    	else
+    	{
+        	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT);
+    	}
     },
     _firstUserCreationFail: function()
     {
     	this.getFirstUserTab().setMasked(false);
     	
     	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT);
+    },
+    
+    onUserFieldsChange: function()
+    {
+    	this.getUserButtonLogin().setDisabled(this.getUserFieldLogin().getValue() == ""
+    		|| this.getUserFieldPassword().getValue() == "");
+    },
+    onUserCreation: function()
+    {
+    	alert("todo")
     }
 });
