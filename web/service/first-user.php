@@ -3,7 +3,6 @@
 
     if (!isUserBaseInitialized())
     {
-    	$success = false;
     	if (isset($_REQUEST['login']))
     	{
     		$fullname = $_REQUEST['fullname'];
@@ -11,9 +10,13 @@
     		$password = $_REQUEST['password'];
        		$email = $_REQUEST['email'];
        	
-       		$success = createUser($login, $password, $fullname, $email);
+       		createUser($login, $password, $fullname, $email);
+	   		echo "{ success: true }";
     	}
-   		echo "{ success: " . ($success ? "true" : "false") . " }";
+    	else
+    	{
+	   		echo "{ success: false }";
+    	}
     }
     else
     {
