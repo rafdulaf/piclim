@@ -17,6 +17,7 @@ Ext.define('PiClim.controller.MainLogin', {
             firstUserFieldLogin: 'main [name=firstuser] [name=login]',
             firstUserFieldPassword: 'main [name=firstuser] [name=password]',
             firstUserFieldConfirmPassword: 'main [name=firstuser] [name=confirmpassword]',
+            firstUserFieldFullname: 'main [name=firstuser] [name=fullname]',
             firstUserFieldEmail: 'main [name=firstuser] [name=email]',
             firstUserButtonCreate: 'main [name=firstuser] button',
             
