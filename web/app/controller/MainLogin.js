@@ -119,6 +119,7 @@ Ext.define('PiClim.controller.MainLogin', {
 
     	var login = this.getFirstUserFieldLogin().getValue();
     	var password = this.getFirstUserFieldPassword().getValue();
+    	var fullname = this.getFirstUserFieldFullname().getValue();
     	var email = this.getFirstUserFieldEmail().getValue();
     	
     	this.getFirstUserTab().setMasked(true);
@@ -127,6 +128,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	    params: {
     	    	login: login,
     	    	password: password,
+    	    	fullname: fullname,
     	    	email: email
     	    },
     	    success: Ext.bind(this._firstUserCreationCb, this),

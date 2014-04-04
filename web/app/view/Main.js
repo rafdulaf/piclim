@@ -159,6 +159,12 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'textfield',
+                		        	label: I18n.MAIN_USERADD_CREATIONPANEL_FULLNAME_LABEL,
+                		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_FULLNAME_HOLDER,
+                		        	name: 'fullname'
+                		        },
+                		        {
+                		        	xtype: 'textfield',
                 		        	label: I18n.MAIN_USERADD_CREATIONPANEL_EMAIL_LABEL,
                 		        	placeHolder: I18n.MAIN_USERADD_CREATIONPANEL_EMAIL_HOLDER,
                 		        	name: 'email'
