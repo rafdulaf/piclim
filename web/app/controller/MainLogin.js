@@ -145,14 +145,14 @@ Ext.define('PiClim.controller.MainLogin', {
     	{
         	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT);
     	}
-    	else if (object.success == true)
+    	else //if (object.success == true)
     	{
-    		
+    		alert(object.success)
     	}
-    	else
-    	{
-        	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT);
-    	}
+    	//else
+    	//{
+        //	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT);
+    	//}
     },
     _firstUserCreationFail: function()
     {
