@@ -24,7 +24,7 @@
     	$md5password = md5($salt . $password);
     	
     	return _sql("INSERT INTO Users(login, password, fullname, email, salt) VALUES(:login, :password, :fullname, :email, :salt)",
-    				array(':login' => $login, ':password' => $md5password, ':fullname' => $fullname, ':email' => $email, ':salt' => $salt));
+    				array(':login' => $login, ':password' => $md5password, ':fullname' => $fullname, ':email' => $email, ':salt' => $salt)) != false;
     }
     
     /* returns false if wrong authentication or db empty, true if ok or */
