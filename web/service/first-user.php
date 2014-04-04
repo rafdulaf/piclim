@@ -4,12 +4,12 @@
     if (!isUserBaseInitialized())
     {
     	$success = false;
-    	if (isset($_POST['login']))
+    	if (isset($_REQUEST['login']))
     	{
-    		$fullname = $_POST['fullname'];
-    		$login = $_POST['login'];
-    		$password = $_POST['password'];
-       		$email = $_POST['email'];
+    		$fullname = $_REQUEST['fullname'];
+    		$login = $_REQUEST['login'];
+    		$password = $_REQUEST['password'];
+       		$email = $_REQUEST['email'];
        	
        		$success = createUser($login, $password, $fullname, $email);
     	}
