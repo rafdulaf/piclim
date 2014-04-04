@@ -13,7 +13,7 @@
        	
        		$success = createUser($login, $password, $fullname, $email);
     	}
-   		echo "{ success: " . $success . " }";
+   		echo "{ success: " . ($success ? "true" : "false") . " }";
     }
     else
     {
