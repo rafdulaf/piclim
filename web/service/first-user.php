@@ -13,7 +13,7 @@
        	
        		$success = createUser($login, $password, $fullname, $email);
     	}
-   		echo "{ success: " . serialize($success) . " }";
+   		echo "{ success: " . var_dump($success) . " }";
     }
     else
     {
