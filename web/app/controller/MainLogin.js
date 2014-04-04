@@ -138,7 +138,18 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getFirstUserTab().setMasked(false);
 
     	var object = Ext.decode(response.responseText);
-    	// TODO
+    	if (object.error == true)
+    	{
+        	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT);
+    	}
+    	else if (object.success == true)
+    	{
+    		
+    	}
+    	else
+    	{
+        	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT);
+    	}
     },
     _firstUserCreationFail: function()
     {

@@ -42,7 +42,11 @@ I18n = {
 	MAIN_USERADD_CREATIONPANEL_EMAIL_HOLDER: "Saisir votre adresse mail",
 	MAIN_USERADD_CREATIONPANEL_CREATE_LABEL: "Création",
 	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TITLE: "Echec de création",
-	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT: "La création de l'utilisateur a échoué.",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT: "Une erreur est survenue lors de la communication avec le serveur.",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TITLE: "Echec de création",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT: "La création est impossible car le serveur est déjà initialisé.",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TITLE: "Echec de création",
+	MAIN_USERADD_CREATIONPANEL_CREATEFAILURE3_TEXT: "La création de l'utilisateur a échoué.",
 
 	null: null
 };
