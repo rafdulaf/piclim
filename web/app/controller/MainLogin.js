@@ -38,7 +38,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'userFieldLogin': { 'change': 'onUserFieldsChange' },
         	'userFieldPassword': { 'change': 'onUserFieldsChange' },
-        	'userButtonLogin': { 'tap': 'onUserCreation' }
+        	'userButtonLogin': { 'tap': 'onUserConnect' }
         }
     },
     
@@ -163,8 +163,37 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getUserButtonLogin().setDisabled(this.getUserFieldLogin().getValue() == ""
     		|| this.getUserFieldPassword().getValue() == "");
     },
-    onUserCreation: function()
+    onUserConnect: function()
     {
-    	alert("todo")
+    	var login = this.getUserFieldLogin().getValue();
+    	var password = this.getUserFieldPassword().getValue();
+    	
+    	this.getUserTab().setMasked(true);
+    	Ext.Ajax.request({
+    	    url: url + "/service/login.php",
+    	    params: {
+    	    	login: login,
+    	    	password: password
+    	    },
+    	    success: Ext.bind(this._userLoginCb, this),
+    	    failure: Ext.bind(this._userLoginFail, this)
+    	});
+    },
+    _userLoginCb: function(response)
+    {
+    	if (response.authenticate == false)
+    	{
+        	Ext.Msg.alert(I18n.MAIN_USE_LOGINPANEL_CREATEFAILURE2_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT);
+    	}
+    	else
+    	{
+    		alert("identification réussie " + response.login + " " + response.email + " " + response.fullname)
+    	}
+    },
+    _userLoginFail: function()
+    {
+    	this.getFirstUserTab().setMasked(false);
+    	
+    	Ext.Msg.alert(I18n.MAIN_USE_LOGINPANEL_CREATEFAILURE_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT);
     }
 });

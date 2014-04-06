@@ -27,6 +27,10 @@ I18n = {
 	MAIN_USER_LOGINPANEL_PASSWORD_LABEL: "Mot de passe",
 	MAIN_USER_LOGINPANEL_PASSWORD_HOLDER: "Saisir votre mot de passe",
 	MAIN_USER_LOGINPANEL_CONNECT_LABEL: "Connexion",
+	MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TITLE: "Echec de connextion",
+	MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TEXT: "La connexion au serveur est impossible",
+	MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TITLE: "Echec de connextion",
+	MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TEXT: "Votre identifiant et mot de passe sont incorrects.",
 
 	MAIN_USERADD_TITLE_SHORT: "Création",
 	MAIN_USERADD_TITLE_LONG: "Identifiants de l'utilisateur à créer",
