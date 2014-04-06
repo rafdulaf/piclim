@@ -45,7 +45,7 @@
                                         array(':login' => $login, ':password' => $md5password));
             if (count($result) == 1)
             {
-                $_SESSION['user'] = $result[0][0]; 
+                $_SESSION['user'] = $result[0]; 
                 return true;
             }
         }

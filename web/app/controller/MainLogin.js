@@ -165,6 +165,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     onUserConnect: function()
     {
+    	var url = this.getServerFieldServer().getValue();
     	var login = this.getUserFieldLogin().getValue();
     	var password = this.getUserFieldPassword().getValue();
     	
