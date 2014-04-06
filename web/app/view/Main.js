@@ -3,6 +3,7 @@ Ext.define('PiClim.view.Main', {
     xtype: 'main',
     requires: [
         'Ext.TitleBar',
+        'Ext.field.Password',
         'Ext.Video'
     ],
     config: {
@@ -14,7 +15,7 @@ Ext.define('PiClim.view.Main', {
                 iconCls: 'home',
 
                 styleHtmlContent: true,
-                scrollable: false,
+                scrollable: null,
 
         		layout: {
         			type: 'vbox',
@@ -40,7 +41,7 @@ Ext.define('PiClim.view.Main', {
                 name: 'server',
 
                 styleHtmlContent: true,
-                scrollable: false,
+                scrollable: null,
 
         		layout: {
         			type: 'vbox',
@@ -104,7 +105,7 @@ Ext.define('PiClim.view.Main', {
                 hidden: true,
 
                 styleHtmlContent: true,
-                scrollable: false,
+                scrollable: null,
 
         		layout: {
         			type: 'vbox',
@@ -191,7 +192,7 @@ Ext.define('PiClim.view.Main', {
                 hidden: true,
 
                 styleHtmlContent: true,
-                scrollable: false,
+                scrollable: null,
 
         		layout: {
         			type: 'vbox',
@@ -250,6 +251,34 @@ Ext.define('PiClim.view.Main', {
                 		        	disabled: true
                 		        }
                 		]
+                	}
+                ],
+
+            },
+
+            {
+                title: I18n.MAIN_WELCOME_TITLE_SHORT,
+                iconCls: 'home',
+                name: 'home2',
+                hidden: true,
+
+                styleHtmlContent: true,
+                scrollable: null,
+
+        		layout: {
+        			type: 'vbox',
+        		},
+        		
+                items: [
+                    {
+                    	docked: 'top',
+                    	xtype: 'titlebar',
+                    	title: "",
+                    	name: "title"
+                	},
+                	{
+                		xtype: 'component',
+                		html: I18n.MAIN_WELCOME_TEXT
                 	}
                 ],
 

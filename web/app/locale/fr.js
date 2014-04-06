@@ -56,5 +56,8 @@ I18n = {
 	MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TITLE: "Création réussie",
 	MAIN_USERADD_CREATIONPANEL_CREATESUCCESS_TEXT: "Le compte utilisateur a été créé avec succès. Vous pouvez maintenant vous identifier normalement.",
 
+	MAIN_WELCOME2_TITLE_LONG_1: "Bienvenue",
+	MAIN_WELCOME2_TITLE_LONG_2: "sur PiClim",
+
 	null: null
 };

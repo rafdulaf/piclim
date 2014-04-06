@@ -24,7 +24,10 @@ Ext.define('PiClim.controller.MainLogin', {
             userTab: 'main [name=user]',
             userFieldLogin: 'main [name=user] [name=login]',
             userFieldPassword: 'main [name=user] [name=password]',
-            userButtonLogin: 'main [name=user] button'
+            userButtonLogin: 'main [name=user] button',
+            
+            home2Tab: 'main [name=home2]',
+            home2Title: 'main [name=home2] [name=title]'
         },
         control: {
         	'serverButton': { 'tap': 'onServerVersion' },
@@ -182,19 +185,33 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _userLoginCb: function(response)
     {
-    	if (response.authenticate == false)
+    	this.getUserTab().setMasked(false);
+
+    	var object = Ext.decode(response.responseText);
+    	if (object.authenticate == false)
     	{
-        	Ext.Msg.alert(I18n.MAIN_USE_LOGINPANEL_CREATEFAILURE2_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE2_TEXT);
+        	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TEXT);
     	}
     	else
     	{
-    		alert("identification réussie " + response.login + " " + response.email + " " + response.fullname)
+    		PiClim.app.user = {};
+    		PiClim.app.user.login = object.login;
+    		PiClim.app.user.email = object.email;
+    		PiClim.app.user.fullname = object.fullname;
+
+        	this.getMain().getTabBar().getItems().get(0).hide();
+        	this.getMain().getTabBar().getItems().get(1).hide();
+        	this.getMain().getTabBar().getItems().get(2).hide();
+        	this.getMain().getTabBar().getItems().get(3).hide();
+        	this.getMain().getTabBar().getItems().get(4).show();
+        	this.getHome2Tab().show();
+        	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
     	}
     },
     _userLoginFail: function()
     {
-    	this.getFirstUserTab().setMasked(false);
+    	this.getUserTab().setMasked(false);
     	
-    	Ext.Msg.alert(I18n.MAIN_USE_LOGINPANEL_CREATEFAILURE_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT);
+    	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TEXT);
     }
 });
