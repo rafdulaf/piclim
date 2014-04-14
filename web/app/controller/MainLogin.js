@@ -2,12 +2,15 @@ Ext.define('PiClim.controller.MainLogin', {
     extend: 'Ext.app.Controller',
     
     requires: [
-         'Ext.Ajax'
+         'Ext.Ajax',
+         'Ext.data.Store'
     ],
     
     config: {
         refs: {
         	main: 'main',
+        	
+        	mainHome: 'main [name=home]',
         	
             serverTab: 'main [name=server]',
             serverFieldServer: 'main [name=server] [name=url]',
@@ -24,10 +27,12 @@ Ext.define('PiClim.controller.MainLogin', {
             userTab: 'main [name=user]',
             userFieldLogin: 'main [name=user] [name=login]',
             userFieldPassword: 'main [name=user] [name=password]',
+            userFieldRemember: 'main [name=user] [name=remember]',
             userButtonLogin: 'main [name=user] button',
             
             home2Tab: 'main [name=home2]',
-            home2Title: 'main [name=home2] [name=title]'
+            home2Title: 'main [name=home2] [name=title]',
+            home2Disconnect: 'main [name=home2] [name=title] [name=delete]'
         },
         control: {
         	'serverButton': { 'tap': 'onServerVersion' },
@@ -41,13 +46,26 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'userFieldLogin': { 'change': 'onUserFieldsChange' },
         	'userFieldPassword': { 'change': 'onUserFieldsChange' },
-        	'userButtonLogin': { 'tap': 'onUserConnect' }
+        	'userButtonLogin': { 'tap': 'onUserConnect' },
+        	
+        	'home2Disconnect': { 'tap': 'onDisconnect' }
         }
     },
     
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        
+    	this.localStore = Ext.create('Ext.data.Store', {
+    	      model: "PiClim.model.Main"
+    	});
+    	this.localStore.load();
+    	if (this.localStore.getAllCount() > 0)
+    	{
+    		this.getServerFieldServer().setValue(this.localStore.getAt(0).get('url'));
+    		this.getUserFieldLogin().setValue(this.localStore.getAt(0).get('login'));
+    		this.getUserFieldPassword().setValue(this.localStore.getAt(0).get('password'));
+    		this.getUserFieldRemember().check();
+    		this.onUserConnect();
+    	}
     },
     
     /** url change */
@@ -66,7 +84,7 @@ Ext.define('PiClim.controller.MainLogin', {
 
     	var url = this.getServerFieldServer().getValue();
 
-    	this.getServerTab().setMasked(true);
+    	this.getMain().setMasked({message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
     	Ext.Ajax.request({
     	    url: url + "/service/version.php",
     	    success: Ext.bind(this._loginCb, this),
@@ -75,7 +93,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _loginCb: function(response)
     {
-    	this.getServerTab().setMasked(false);
+    	this.getMain().unmask();
 
     	var object = Ext.decode(response.responseText);
         if (object.version != PiClim.app.version)
@@ -95,7 +113,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _loginFail: function()
     {
-    	this.getServerTab().setMasked(false);
+    	this.getMain().unmask();
     	
     	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT_FAILURE_TITLE, I18n.MAIN_SERVER_CONNECT_FAILURE_TEXT);
     },
@@ -120,7 +138,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	var fullname = this.getFirstUserFieldFullname().getValue();
     	var email = this.getFirstUserFieldEmail().getValue();
     	
-    	this.getFirstUserTab().setMasked(true);
+    	this.getMain().setMasked({message: I18n.MAIN_USERADD_CREATIONPANEL_CREATING});
     	Ext.Ajax.request({
     	    url: url + "/service/first-user.php",
     	    params: {
@@ -135,7 +153,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _firstUserCreationCb: function(response)
     {
-    	this.getFirstUserTab().setMasked(false);
+    	this.getMain().unmask();
 
     	var object = Ext.decode(response.responseText);
     	if (object.error == true)
@@ -156,7 +174,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _firstUserCreationFail: function()
     {
-    	this.getFirstUserTab().setMasked(false);
+    	this.getMain().unmask();
     	
     	Ext.Msg.alert(I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TITLE, I18n.MAIN_USERADD_CREATIONPANEL_CREATEFAILURE_TEXT);
     },
@@ -172,7 +190,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	var login = this.getUserFieldLogin().getValue();
     	var password = this.getUserFieldPassword().getValue();
     	
-    	this.getUserTab().setMasked(true);
+    	this.getMain().setMasked({message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
     	Ext.Ajax.request({
     	    url: url + "/service/login.php",
     	    params: {
@@ -185,7 +203,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _userLoginCb: function(response)
     {
-    	this.getUserTab().setMasked(false);
+    	this.getMain().unmask();
 
     	var object = Ext.decode(response.responseText);
     	if (object.authenticate == false)
@@ -199,19 +217,54 @@ Ext.define('PiClim.controller.MainLogin', {
     		PiClim.app.user.email = object.email;
     		PiClim.app.user.fullname = object.fullname;
 
+    		if (this.getUserFieldRemember().isChecked())
+    		{
+    			this.localStore.removeAll();
+    			this.localStore.add({url: this.getServerFieldServer().getValue(), login: this.getUserFieldLogin().getValue(), password: this.getUserFieldPassword().getValue()});
+    			this.localStore.sync();
+    		}
+    		
         	this.getMain().getTabBar().getItems().get(0).hide();
         	this.getMain().getTabBar().getItems().get(1).hide();
         	this.getMain().getTabBar().getItems().get(2).hide();
         	this.getMain().getTabBar().getItems().get(3).hide();
         	this.getMain().getTabBar().getItems().get(4).show();
-        	this.getHome2Tab().show();
         	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
+        	this.getMain().setActiveItem(4);
     	}
     },
     _userLoginFail: function()
     {
-    	this.getUserTab().setMasked(false);
+    	this.getMain().unmask();
     	
     	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TEXT);
+    },
+    
+    onDisconnect: function()
+    {
+    	this.getMain().getTabBar().getItems().get(4).hide();
+    	this.getMain().getTabBar().getItems().get(0).show();
+    	this.getMain().getTabBar().getItems().get(1).show();
+    	this.getMain().setActiveItem(0);
+
+    	this.localStore.removeAll();
+		this.localStore.sync();
+
+    	this.getMain().setMasked({message: I18n.MAIN_SERVER_CONNECT2_DISCONNECTING});
+    	Ext.Ajax.request({
+    	    url: url + "/service/disconnect.php",
+    	    success: Ext.bind(this._userDisconnectCb, this),
+    	    failure: Ext.bind(this._userDisconnectFail, this)
+    	});
+    },
+    _userLoginCb: function(response)
+    {
+    	this.getMain().unmask();
+    },
+    _userDisconnectFail: function()
+    {
+    	this.getMain().unmask();
+    	
+    	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT2_FAILURE_TITLE, I18n.MAIN_SERVER_CONNECT2_FAILURE_TEXT);
     }
 });

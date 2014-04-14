@@ -22,6 +22,10 @@ Ext.application({
         'MainLogin'
     ],
 
+    models: [
+        'Main'
+    ],
+    
     views: [
         'Main'
     ],

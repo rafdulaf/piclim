@@ -12,6 +12,10 @@
         }
         return $_SESSION['user'];
     }
+    function disconnect()
+    {
+    	$_SESSION['user'] = null;
+    }
     
     function isUserBaseInitialized()
     {

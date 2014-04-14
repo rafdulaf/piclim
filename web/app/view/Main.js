@@ -13,6 +13,7 @@ Ext.define('PiClim.view.Main', {
             {
                 title: I18n.MAIN_WELCOME_TITLE_SHORT,
                 iconCls: 'home',
+                name: 'home',
 
                 styleHtmlContent: true,
                 scrollable: null,
@@ -80,7 +81,6 @@ Ext.define('PiClim.view.Main', {
                 		        	xtype: 'textfield',
                 		        	label: I18n.MAIN_SERVER_LOGINPANEL_SERVERNAME_LABEL,
                 		        	placeHolder: I18n.MAIN_SERVER_LOGINPANEL_SERVERNAME_HOLDER,
-                		        	autoComplete: true,
                 		        	name: 'url'
                 		        },
                 		        {
@@ -231,15 +231,18 @@ Ext.define('PiClim.view.Main', {
                 		        	xtype: 'textfield',
                 		        	label: I18n.MAIN_USER_LOGINPANEL_LOGIN_LABEL,
                 		        	placeHolder: I18n.MAIN_USER_LOGINPANEL_LOGIN_HOLDER,
-                		        	autoComplete: true,
                 		        	name: 'login'
                 		        },
                 		        {
                 		        	xtype: 'passwordfield',
                 		        	label: I18n.MAIN_USER_LOGINPANEL_PASSWORD_LABEL,
                 		        	placeHolder: I18n.MAIN_USER_LOGINPANEL_PASSWORD_HOLDER,
-                		        	autoComplete: true,
                 		        	name: 'password'
+                		        },
+                		        {
+                		        	xtype: 'checkboxfield',
+                		        	label: I18n.MAIN_USER_LOGINPANEL_REMEMBER_LABEL,
+                		        	name: 'remember'
                 		        },
                 		        {
                 		        	xtype: 'component',
@@ -274,7 +277,14 @@ Ext.define('PiClim.view.Main', {
                     	docked: 'top',
                     	xtype: 'titlebar',
                     	title: "",
-                    	name: "title"
+                    	name: "title",
+                    	items: [ 
+                        	    {
+                        	    	iconCls: 'delete',
+                        	    	align: 'right',
+                        	    	name: 'delete'
+                        	    }
+                        ]
                 	},
                 	{
                 		xtype: 'component',
