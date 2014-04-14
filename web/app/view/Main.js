@@ -4,6 +4,7 @@ Ext.define('PiClim.view.Main', {
     requires: [
         'Ext.TitleBar',
         'Ext.field.Password',
+        'Ext.field.Checkbox',
         'Ext.Video'
     ],
     config: {

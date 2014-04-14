@@ -84,7 +84,7 @@ Ext.define('PiClim.controller.MainLogin', {
 
     	var url = this.getServerFieldServer().getValue();
 
-    	this.getMain().setMasked({message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
+    	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
     	Ext.Ajax.request({
     	    url: url + "/service/version.php",
     	    success: Ext.bind(this._loginCb, this),
@@ -138,7 +138,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	var fullname = this.getFirstUserFieldFullname().getValue();
     	var email = this.getFirstUserFieldEmail().getValue();
     	
-    	this.getMain().setMasked({message: I18n.MAIN_USERADD_CREATIONPANEL_CREATING});
+    	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_USERADD_CREATIONPANEL_CREATING});
     	Ext.Ajax.request({
     	    url: url + "/service/first-user.php",
     	    params: {
@@ -190,7 +190,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	var login = this.getUserFieldLogin().getValue();
     	var password = this.getUserFieldPassword().getValue();
     	
-    	this.getMain().setMasked({message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
+    	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
     	Ext.Ajax.request({
     	    url: url + "/service/login.php",
     	    params: {
@@ -250,14 +250,16 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.localStore.removeAll();
 		this.localStore.sync();
 
-    	this.getMain().setMasked({message: I18n.MAIN_SERVER_CONNECT2_DISCONNECTING});
+    	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT2_DISCONNECTING});
+
+    	var url = this.getServerFieldServer().getValue();
     	Ext.Ajax.request({
     	    url: url + "/service/disconnect.php",
     	    success: Ext.bind(this._userDisconnectCb, this),
     	    failure: Ext.bind(this._userDisconnectFail, this)
     	});
     },
-    _userLoginCb: function(response)
+    _userDisconnectCb: function(response)
     {
     	this.getMain().unmask();
     },
