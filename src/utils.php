@@ -122,4 +122,9 @@
             return false;
         }
     }
+    
+    function update()
+    {
+    	exec("git update");
+    }
 ?>

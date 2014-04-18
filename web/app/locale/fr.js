@@ -65,6 +65,17 @@ I18n = {
 
 	MAIN_WELCOME2_TITLE_LONG_1: "Bienvenue",
 	MAIN_WELCOME2_TITLE_LONG_2: "sur PiClim",
+	
+	MAIN_SETTINGS_TITLE_SHORT: "Paramètres",
+	MAIN_SETTINGS_TITLE_LONG: "Réglages de l'application",
+	MAIN_SETTINGS_TEXT: "Sélectionner l'option de votre choix",
+	MAIN_SETTINGS_OPTIONS_TITLE: "Options",
+	MAIN_SETTINGS_OPTIONS_UPDATE_TITLE: "Mettre à jour",
+	MAIN_SETTINGS_OPTIONS_UPDATING: "Mise à jour du serveur avec la dernière version disponible...<hr/>Veuillez patienter",
+	MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE: "Mise à jour terminée",
+	MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT: "Le serveur a été mis à jour avec la dernière version disponible. L'application va être redémarrée.",
+	MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TITLE: "Echec de mise à jour",
+	MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TEXT: "La mise à jour du serveur a échoué. Consulter les journaux applicatifs sur le serveur pour plus de détails.",
 
 	null: null
 };

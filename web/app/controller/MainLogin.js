@@ -32,7 +32,10 @@ Ext.define('PiClim.controller.MainLogin', {
             
             home2Tab: 'main [name=home2]',
             home2Title: 'main [name=home2] [name=title]',
-            home2Disconnect: 'main [name=home2] [name=title] [name=delete]'
+            home2Disconnect: 'main [name=home2] [name=title] [name=delete]',
+            
+            settingsTab: 'main [name=settings]',
+            settingsUpdateButton: 'main [name=settings] [name=update]'
         },
         control: {
         	'serverButton': { 'tap': 'onServerVersion' },
@@ -48,7 +51,9 @@ Ext.define('PiClim.controller.MainLogin', {
         	'userFieldPassword': { 'change': 'onUserFieldsChange' },
         	'userButtonLogin': { 'tap': 'onUserConnect' },
         	
-        	'home2Disconnect': { 'tap': 'onDisconnect' }
+        	'home2Disconnect': { 'tap': 'onDisconnect' },
+        	
+        	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
     },
     
@@ -241,6 +246,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	this.getMain().getTabBar().getItems().get(2).hide();
         	this.getMain().getTabBar().getItems().get(3).hide();
         	this.getMain().getTabBar().getItems().get(4).show();
+        	this.getMain().getTabBar().getItems().get(5).show();
         	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
         	this.getMain().setActiveItem(4);
     	}
@@ -258,6 +264,7 @@ Ext.define('PiClim.controller.MainLogin', {
     onDisconnect: function()
     {
     	this.getMain().getTabBar().getItems().get(4).hide();
+    	this.getMain().getTabBar().getItems().get(5).hide();
     	this.getMain().getTabBar().getItems().get(0).show();
     	this.getMain().getTabBar().getItems().get(1).show();
     	this.getMain().setActiveItem(0);
@@ -282,5 +289,54 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().unmask();
     	
     	Ext.Msg.alert(I18n.MAIN_SERVER_CONNECT2_FAILURE_TITLE, I18n.MAIN_SERVER_CONNECT2_FAILURE_TEXT);
+    },
+    
+    onUpdate: function()
+    {
+    	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SETTINGS_OPTIONS_UPDATING});
+
+    	Ext.Ajax.request({
+    	    url: PiClim.app.url + "/service/update.php",
+    	    success: Ext.bind(this._updateCb, this),
+    	    failure: Ext.bind(this._updateFail, this)
+    	});
+    },
+    _updateCb: function()
+    {
+    	this.getMain().unmask();
+    	
+    	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT, this._updateCbReload, this);
+    },
+    _updateCbReload: function()
+    {
+		// Compute new url
+		var href = window.location.href;
+
+		var i1 = href.indexOf('?');
+		if (i1 >= 0)
+		{
+			href = href.substring(0, i1);
+		}
+
+		var i2 = href.indexOf('#');
+		if (i2 >= 0)
+		{
+			href = href.substring(0, i2);
+		}
+
+		var i3 = href.indexOf(';');
+		if (i3 >= 0)
+		{
+			href = href.substring(0, i3);
+		}
+		
+		// open new url
+		window.location.href = href + "?" + (params || "") + "&foo=" + Math.random();		
+    },
+    _updateFail: function()
+    {
+    	this.getMain().unmask();
+    	
+    	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TEXT);
     }
 });
