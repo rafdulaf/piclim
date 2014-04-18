@@ -331,7 +331,7 @@ Ext.define('PiClim.controller.MainLogin', {
 		}
 		
 		// open new url
-		window.location.href = href + "?" + (params || "") + "&foo=" + Math.random();		
+		window.location.href = href + "?" + "&foo=" + Math.random();		
     },
     _updateFail: function()
     {
