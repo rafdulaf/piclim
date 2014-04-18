@@ -125,6 +125,6 @@
     
     function update()
     {
-    	exec("git update");
+    	return exec("git update");
     }
 ?>

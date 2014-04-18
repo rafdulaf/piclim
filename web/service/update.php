@@ -1,7 +1,7 @@
 <?php
     include '../../src/authentication.php';
 
-    update();
+    $result = update();
     
-    echo "{ }";
+    echo "{ result: '" . $result . "' }";
 ?>
