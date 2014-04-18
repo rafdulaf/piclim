@@ -48,12 +48,12 @@
                 $_SESSION['user'] = $result[0];
 
                	$generateToken = uniqid();
-               	$encryptedToken = md5($generateToken);
+               	$encryptedToken2 = md5($generateToken);
                 
                 $_SESSION['user']['remember_token'] = $generateToken;
                 
                	_sql("UPDATE Users SET remember_token=:remember_token WHERE login=:login",
-            		array(':remember_token' => $encryptedToken, ':login' => $login));
+            		array(':remember_token' => $encryptedToken2, ':login' => $login));
                 
                return true;
          }
@@ -79,7 +79,7 @@
             {
                 $_SESSION['user'] = $result[0];
 
-                if ($remember_token == true)
+                if ($remember_token == "true")
                 {
                 	$generateToken = uniqid();
                 	$encryptedToken = md5($generateToken);

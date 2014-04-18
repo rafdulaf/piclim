@@ -196,13 +196,15 @@ Ext.define('PiClim.controller.MainLogin', {
     {
     	var login = this.getUserFieldLogin().getValue();
     	var password = this.getUserFieldPassword().getValue();
+    	var remember = this.getUserFieldRemember().isChecked();
     	
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
     	Ext.Ajax.request({
     	    url: PiClim.app.url + "/service/login.php",
     	    params: {
     	    	login: login,
-    	    	password: password
+    	    	password: password,
+    	    	remember: remember
     	    },
     	    success: Ext.bind(this._userLoginCb, this),
     	    failure: Ext.bind(this._userLoginFail, this)
@@ -224,12 +226,12 @@ Ext.define('PiClim.controller.MainLogin', {
     		PiClim.app.user.email = object.email;
     		PiClim.app.user.fullname = object.fullname;
 
+    		this.localStore.removeAll();
     		if (object.remember_token)
     		{
-    			this.localStore.removeAll();
     			this.localStore.add({url: PiClim.app.url, login: this.getUserFieldLogin().getValue(), remember_token: object.remember_token});
-    			this.localStore.sync();
     		}
+    		this.localStore.sync();
     		
         	this.getMain().getTabBar().getItems().get(0).hide();
         	this.getMain().getTabBar().getItems().get(1).hide();
