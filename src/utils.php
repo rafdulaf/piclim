@@ -57,6 +57,8 @@
                 
                return true;
          }
+         
+         return false;
     }
     
     /* returns false if wrong authentication or db empty, true if ok or */

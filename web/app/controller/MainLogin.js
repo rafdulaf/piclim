@@ -245,7 +245,10 @@ Ext.define('PiClim.controller.MainLogin', {
     _userLoginFail: function()
     {
     	this.getMain().unmask();
-    	
+
+		this.localStore.removeAll();
+		this.localStore.sync();
+
     	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TEXT);
     },
     
