@@ -60,11 +60,21 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.localStore.load();
     	if (this.localStore.getAllCount() > 0)
     	{
-    		this.getServerFieldServer().setValue(this.localStore.getAt(0).get('url'));
-    		this.getUserFieldLogin().setValue(this.localStore.getAt(0).get('login'));
-    		this.getUserFieldPassword().setValue(this.localStore.getAt(0).get('password'));
-    		this.getUserFieldRemember().check();
-    		this.onUserConnect();
+    		PiClim.app.url = this.localStore.getAt(0).get('url'); 
+    		
+        	var login = this.localStore.getAt(0).get('login');
+        	var remember_token = this.localStore.getAt(0).get('remember_token');
+        	
+        	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
+        	Ext.Ajax.request({
+        	    url: PiClim.app.url + "/service/login.php",
+        	    params: {
+        	    	login: login,
+        	    	remember_token: remember_token
+        	    },
+        	    success: Ext.bind(this._userLoginCb, this),
+        	    failure: Ext.bind(this._userLoginFail, this)
+        	});
     	}
     },
     
@@ -82,11 +92,11 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(2).hide();
     	this.getMain().getTabBar().getItems().get(3).hide();
 
-    	var url = this.getServerFieldServer().getValue();
+    	PiClim.app.url = this.getServerFieldServer().getValue();
 
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
     	Ext.Ajax.request({
-    	    url: url + "/service/version.php",
+    	    url: PiClim.app.url + "/service/version.php",
     	    success: Ext.bind(this._loginCb, this),
     	    failure: Ext.bind(this._loginFail, this)
     	});
@@ -131,8 +141,6 @@ Ext.define('PiClim.controller.MainLogin', {
     /** user creation */
     onFirstUserCreation: function()
     {
-    	var url = this.getServerFieldServer().getValue();
-
     	var login = this.getFirstUserFieldLogin().getValue();
     	var password = this.getFirstUserFieldPassword().getValue();
     	var fullname = this.getFirstUserFieldFullname().getValue();
@@ -140,7 +148,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_USERADD_CREATIONPANEL_CREATING});
     	Ext.Ajax.request({
-    	    url: url + "/service/first-user.php",
+    	    url: PiClim.app.url + "/service/first-user.php",
     	    params: {
     	    	login: login,
     	    	password: password,
@@ -186,13 +194,12 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     onUserConnect: function()
     {
-    	var url = this.getServerFieldServer().getValue();
     	var login = this.getUserFieldLogin().getValue();
     	var password = this.getUserFieldPassword().getValue();
     	
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_LOGINPANEL_CONNECTING});
     	Ext.Ajax.request({
-    	    url: url + "/service/login.php",
+    	    url: PiClim.app.url + "/service/login.php",
     	    params: {
     	    	login: login,
     	    	password: password
@@ -217,10 +224,10 @@ Ext.define('PiClim.controller.MainLogin', {
     		PiClim.app.user.email = object.email;
     		PiClim.app.user.fullname = object.fullname;
 
-    		if (this.getUserFieldRemember().isChecked())
+    		if (object.remember_token)
     		{
     			this.localStore.removeAll();
-    			this.localStore.add({url: this.getServerFieldServer().getValue(), login: this.getUserFieldLogin().getValue(), password: this.getUserFieldPassword().getValue()});
+    			this.localStore.add({url: PiClim.app.url, login: this.getUserFieldLogin().getValue(), remember_token: object.remember_token});
     			this.localStore.sync();
     		}
     		
@@ -252,9 +259,8 @@ Ext.define('PiClim.controller.MainLogin', {
 
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT2_DISCONNECTING});
 
-    	var url = this.getServerFieldServer().getValue();
     	Ext.Ajax.request({
-    	    url: url + "/service/disconnect.php",
+    	    url: PiClim.app.url + "/service/disconnect.php",
     	    success: Ext.bind(this._userDisconnectCb, this),
     	    failure: Ext.bind(this._userDisconnectFail, this)
     	});

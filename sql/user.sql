@@ -4,5 +4,6 @@ CREATE TABLE Users (
   `password` varchar(128)  NOT NULL,
   `salt` varchar(64) NOT NULL,
   `fullname` varchar(128) NOT NULL,
-  `email` varchar(128) NOT NULL
+  `email` varchar(128) NOT NULL,
+  `remember_token` varchar(128)
 )ENGINE=innodb;
