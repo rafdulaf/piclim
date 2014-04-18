@@ -218,6 +218,9 @@ Ext.define('PiClim.controller.MainLogin', {
     	if (object.authenticate == false)
     	{
         	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE2_TEXT);
+
+    		this.localStore.removeAll();
+    		this.localStore.sync();
     	}
     	else
     	{
@@ -229,7 +232,7 @@ Ext.define('PiClim.controller.MainLogin', {
     		this.localStore.removeAll();
     		if (object.remember_token)
     		{
-    			this.localStore.add({url: PiClim.app.url, login: this.getUserFieldLogin().getValue(), remember_token: object.remember_token});
+    			this.localStore.add({url: PiClim.app.url, login: object.login, remember_token: object.remember_token});
     		}
     		this.localStore.sync();
     		
