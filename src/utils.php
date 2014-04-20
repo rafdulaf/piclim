@@ -2,13 +2,11 @@
 	include 'devmode.php';
     include 'sql.php';
 
+   	session_start();
+   	
     /* {login, fullname, email} or null */
     function getCurrentUser()
     {
-    	if (session_status() == PHP_SESSION_NONE)
-    	{
-        	session_start();
-    	}
         if(!isset($_SESSION['user']))
         {
             return null;
@@ -18,6 +16,8 @@
     function disconnect()
     {
     	$_SESSION['user'] = null;
+    	session_unset();
+    	session_destroy();
     }
     
     function isUserBaseInitialized()
