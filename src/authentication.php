@@ -1,10 +1,9 @@
 <?php 
 	include 'utils.php';
 	
-	$user = getCurrentUser();
-	if ($user == null)
+	if (getCurrentUser() == null)
 	{
-		echo "{ failure: " . $user['login'] . " }";
+		echo "{ failure: " . var_dump($_SESSION) . " }";
 		exit;
 	}
 ?>
