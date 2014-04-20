@@ -1,10 +1,9 @@
 <?php 
 	include 'utils.php';
 	
-	echo $_SESSION['user'];
 	if (getCurrentUser() == null)
 	{
-		echo "{ failure: true }";
+		echo "{ failure: true, aa: " . $_SESSION['user'] . " }";
 		exit;
 	}
 ?>
