@@ -3,7 +3,7 @@
 	
 	if (getCurrentUser() == null)
 	{
-		echo "{ failure: " . var_dump($_SESSION) . " }";
+		echo "{ failure: true }";
 		exit;
 	}
 ?>
