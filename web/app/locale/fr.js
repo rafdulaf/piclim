@@ -76,6 +76,9 @@ I18n = {
 	MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT: "Le serveur a été mis à jour avec la dernière version disponible. L'application va être redémarrée.",
 	MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TITLE: "Echec de mise à jour",
 	MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TEXT: "La mise à jour du serveur a échoué. Consulter les journaux applicatifs sur le serveur pour plus de détails.",
+	
+	MAIN_AUTHENTICATION_FAILURE_TITLE: "Echec d'authentification",
+	MAIN_AUTHENTICATION_FAILURE_TEXT: "Vous n'êtes plus identifié auprès du serveur. Cliquez sur Ok pour recharger l'application et vous identifier à nouveau.",
 
 	null: null
 };

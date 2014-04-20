@@ -301,13 +301,15 @@ Ext.define('PiClim.controller.MainLogin', {
     	    failure: Ext.bind(this._updateFail, this)
     	});
     },
-    _updateCb: function()
+    _updateCb: function(response)
     {
     	this.getMain().unmask();
     	
-    	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT, this._updateCbReload, this);
+    	this._authenticationFailureTest(response);
+    	
+    	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT, this._reload, this);
     },
-    _updateCbReload: function()
+    _reload: function()
     {
 		// Compute new url
 		var href = window.location.href;
@@ -338,5 +340,14 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().unmask();
     	
     	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE_TEXT);
+    },
+    _authenticationFailureTest: function(response)
+    {
+    	var object = Ext.decode(response.responseText);
+    	if (object.failure)
+    	{
+        	Ext.Msg.alert(I18n.MAIN_AUTHENTICATION_FAILURE_TITLE, I18n.MAIN_AUTHENTICATION_FAILURE_TEXT, this._reload, this);
+        	throw "Authentication failure"; 
+    	}
     }
 });
