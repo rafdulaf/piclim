@@ -1,9 +1,10 @@
 <?php 
 	include 'utils.php';
 	
-	if (getCurrentUser()['login'] == null)
+	$user = getCurrentUser();
+	if ($user == null)
 	{
-		echo "{ failure: " . getCurrentUser()['login'] . " }";
+		echo "{ failure: " . $user['login'] . " }";
 		exit;
 	}
 ?>
