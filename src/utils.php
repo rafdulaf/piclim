@@ -128,6 +128,6 @@
     
     function update()
     {
-    	return exec("echo pwd; git pull");
+    	return exec("pwd");
     }
 ?>
