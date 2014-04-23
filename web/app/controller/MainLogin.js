@@ -308,8 +308,15 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().unmask();
     	
     	this._authenticationFailureTest(response);
-    	
-    	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT, this._reload, this);
+    	var object = Ext.decode(response.responseText);
+    	if (object.result)
+    	{
+    		Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_SUCCESS_TEXT, this._reload, this);
+    	}
+    	else
+    	{
+        	Ext.Msg.alert(I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE2_TITLE, I18n.MAIN_SETTINGS_OPTIONS_UPDATE_FAILURE2_TEXT);
+    	}
     },
     _reload: function()
     {
