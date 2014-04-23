@@ -128,6 +128,6 @@
     
     function update()
     {
-    	return exec("cd ../.. | git pull");
+    	return shell_exec("cd ../.. ; git pull");
     }
 ?>
