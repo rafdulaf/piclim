@@ -294,7 +294,32 @@ Ext.define('PiClim.view.Main', {
                 ],
 
             },
+            {
+                title: I18n.MAIN_USERS_TITLE_SHORT,
+                iconCls: 'user',
+                name: 'users',
+                hidden: true,
 
+                styleHtmlContent: true,
+                scrollable: null,
+
+        		layout: {
+        			type: 'vbox',
+        		},
+
+        		items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: I18n.MAIN_USERS_TITLE_LONG
+                    },
+                    {
+                        xtype: 'component',
+                        html: I18n.MAIN_USERS_TEXT
+                    }
+                ]
+            },
+            
             {
                 title: I18n.MAIN_SETTINGS_TITLE_SHORT,
                 iconCls: 'settings',
@@ -346,6 +371,7 @@ Ext.define('PiClim.view.Main', {
                 	}
                 ]
             }
+
         ]
     }
 });

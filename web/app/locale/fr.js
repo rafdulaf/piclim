@@ -66,6 +66,10 @@ I18n = {
 	MAIN_WELCOME2_TITLE_LONG_1: "Bienvenue",
 	MAIN_WELCOME2_TITLE_LONG_2: "sur PiClim",
 	
+	MAIN_USERS_TITLE_SHORT: "Utilisateurs",
+	MAIN_USERS_TITLE_LONG: "Gestion des utilisateurs",
+	MAIN_USERS_TEXT: "Voici les utilisateurs existants sur le serveur :",
+
 	MAIN_SETTINGS_TITLE_SHORT: "Paramètres",
 	MAIN_SETTINGS_TITLE_LONG: "Réglages de l'application",
 	MAIN_SETTINGS_TEXT: "Sélectionner l'option de votre choix",
