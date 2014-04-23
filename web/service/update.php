@@ -3,5 +3,5 @@
 
     $result = update();
     
-    echo "{ result: '" . $result . "' }";
+    echo "{ result: " . $result . " }";
 ?>
