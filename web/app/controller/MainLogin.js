@@ -86,7 +86,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	else if (PiClim.app.isWeb)
     	{
     		PiClim.app.url = window.location.href;
-    		this.onServerVersion();
+       		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 2 : 1).show();
     	}
     },
     
@@ -275,7 +275,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(5).hide();
     	this.getMain().getTabBar().getItems().get(6).hide();
     	this.getMain().getTabBar().getItems().get(0).show();
-    	this.getMain().getTabBar().getItems().get(1).show();
+   		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 2 : 1).show();
     	this.getMain().setActiveItem(0);
 
     	this.localStore.removeAll();

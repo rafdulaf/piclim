@@ -41,7 +41,8 @@ Ext.define('PiClim.view.Main', {
                 title: I18n.MAIN_SERVER_TITLE_SHORT,
                 iconCls: 'download',
                 name: 'server',
-
+                hidden: true,
+                
                 styleHtmlContent: true,
                 scrollable: null,
 
