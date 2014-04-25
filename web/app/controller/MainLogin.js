@@ -143,7 +143,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         else
         {
-    		this._userLoginSuccess();
+    		this._userLoginSuccess(object.authenticated);
         }
     },
     _loginFail: function()
@@ -235,7 +235,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	    failure: Ext.bind(this._userLoginFail, this)
     	});
     },
-    _userLoginSuccess: function()
+    _userLoginSuccess: function(fullname)
     {
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
@@ -244,7 +244,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(4).show();
     	this.getMain().getTabBar().getItems().get(5).show();
     	this.getMain().getTabBar().getItems().get(6).show();
-    	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
+    	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
     	this.getMain().setActiveItem(4);
     },
     _userLoginCb: function(response)
@@ -273,7 +273,7 @@ Ext.define('PiClim.controller.MainLogin', {
     		}
     		this.localStore.sync();
     		
-    		this._userLoginSuccess();
+    		this._userLoginSuccess(object.fullname);
     	}
     },
     _userLoginFail: function()
