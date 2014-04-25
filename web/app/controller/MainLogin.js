@@ -93,6 +93,10 @@ Ext.define('PiClim.controller.MainLogin', {
         	    failure: Ext.bind(this._loginFail, this)
         	});
     	}
+    	else
+    	{
+    		this.getMain().getTabBar().getItems().get(1).show();
+    	}
     },
     
     /** url change */
