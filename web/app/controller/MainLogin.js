@@ -89,7 +89,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
         	Ext.Ajax.request({
         	    url: PiClim.app.url + "/service/version.php",
-        	    success: Ext.bind(this._loginCb, this, [true], true),
+        	    success: Ext.bind(this._loginCb, this, [true], 1),
         	    failure: Ext.bind(this._loginFail, this)
         	});
     	}
@@ -119,7 +119,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	});
     },
     _loginCb: function(response, donotactivate)
-    {debugger
+    {
     	this.getMain().unmask();
 
     	var object = Ext.decode(response.responseText);
