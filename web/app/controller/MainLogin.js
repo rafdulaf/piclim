@@ -59,7 +59,7 @@ Ext.define('PiClim.controller.MainLogin', {
     
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-    	PiClim.app.isWeb = true;
+    	PiClim.app.isWeb = false;
     	
     	this.localStore = Ext.create('Ext.data.Store', {
     	      model: "PiClim.model.Main"
