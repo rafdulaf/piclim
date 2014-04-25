@@ -317,6 +317,31 @@ Ext.define('PiClim.view.Main', {
                     {
                         xtype: 'component',
                         html: I18n.MAIN_USERS_TEXT
+                    },
+                	{
+                		flex: 1,
+                		xtype: 'container',
+                		layout: {
+                			type: 'vbox',
+                			align: 'center',
+                			pack: 'center'
+                		},
+                		
+                		defaults: {
+                			maxWidth: '720px',
+                			width: '100%'
+                		},
+
+                		items: [
+                		        {
+                		        	xtype: 'titlebar',
+                		        	title: I18n.MAIN_USER_LOGINPANEL_TITLE
+                		        },
+                		        {
+                		        	xtype: 'list',
+                		        	itemTpl: '{fullname} - {email} ({login})'
+                		        }
+                		]
                     }
                 ]
             },
