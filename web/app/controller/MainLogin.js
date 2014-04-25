@@ -136,10 +136,14 @@ Ext.define('PiClim.controller.MainLogin', {
         	this.getMain().getTabBar().getItems().get(2).show();
         	if (!donotactivate) this.getMain().setActiveItem(2);
         }
-        else
+        else if (!object.authenticated)
         {
         	this.getMain().getTabBar().getItems().get(3).show();
         	if (!donotactivate) this.getMain().setActiveItem(3);
+        }
+        else
+        {
+    		this._userLoginSuccess();
         }
     },
     _loginFail: function()
@@ -231,6 +235,18 @@ Ext.define('PiClim.controller.MainLogin', {
     	    failure: Ext.bind(this._userLoginFail, this)
     	});
     },
+    _userLoginSuccess: function()
+    {
+    	this.getMain().getTabBar().getItems().get(0).hide();
+    	this.getMain().getTabBar().getItems().get(1).hide();
+    	this.getMain().getTabBar().getItems().get(2).hide();
+    	this.getMain().getTabBar().getItems().get(3).hide();
+    	this.getMain().getTabBar().getItems().get(4).show();
+    	this.getMain().getTabBar().getItems().get(5).show();
+    	this.getMain().getTabBar().getItems().get(6).show();
+    	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
+    	this.getMain().setActiveItem(4);
+    },
     _userLoginCb: function(response)
     {
     	this.getMain().unmask();
@@ -257,15 +273,7 @@ Ext.define('PiClim.controller.MainLogin', {
     		}
     		this.localStore.sync();
     		
-        	this.getMain().getTabBar().getItems().get(0).hide();
-        	this.getMain().getTabBar().getItems().get(1).hide();
-        	this.getMain().getTabBar().getItems().get(2).hide();
-        	this.getMain().getTabBar().getItems().get(3).hide();
-        	this.getMain().getTabBar().getItems().get(4).show();
-        	this.getMain().getTabBar().getItems().get(5).show();
-        	this.getMain().getTabBar().getItems().get(6).show();
-        	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + object.fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
-        	this.getMain().setActiveItem(4);
+    		this._userLoginSuccess();
     	}
     },
     _userLoginFail: function()
