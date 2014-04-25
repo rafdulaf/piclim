@@ -119,7 +119,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	});
     },
     _loginCb: function(response, donotactivate)
-    {
+    {debugger
     	this.getMain().unmask();
 
     	var object = Ext.decode(response.responseText);
