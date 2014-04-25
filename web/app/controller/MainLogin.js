@@ -59,6 +59,8 @@ Ext.define('PiClim.controller.MainLogin', {
     
     //called when the Application is launched, remove if not needed
     launch: function(app) {
+    	PiClim.app.isWeb = true;
+    	
     	this.localStore = Ext.create('Ext.data.Store', {
     	      model: "PiClim.model.Main"
     	});
@@ -80,6 +82,11 @@ Ext.define('PiClim.controller.MainLogin', {
         	    success: Ext.bind(this._userLoginCb, this),
         	    failure: Ext.bind(this._userLoginFail, this)
         	});
+    	}
+    	else if (PiClim.app.isWeb)
+    	{
+    		PiClim.app.url = window.location.href;
+    		this.onServerVersion();
     	}
     },
     
