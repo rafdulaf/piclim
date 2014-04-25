@@ -118,7 +118,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
     	Ext.Ajax.request({
     	    url: PiClim.app.url + "/service/version.php",
-    	    success: Ext.bind(this._loginCb, this),
+    	    success: Ext.bind(this._loginCb, this, [false], 1),
     	    failure: Ext.bind(this._loginFail, this)
     	});
     },
