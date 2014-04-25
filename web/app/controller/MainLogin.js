@@ -86,7 +86,12 @@ Ext.define('PiClim.controller.MainLogin', {
     	else if (PiClim.app.isWeb)
     	{
     		PiClim.app.url = window.location.href;
-       		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 2 : 1).show();
+        	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
+        	Ext.Ajax.request({
+        	    url: PiClim.app.url + "/service/version.php",
+        	    success: Ext.bind(this._loginCb, this, [true], true),
+        	    failure: Ext.bind(this._loginFail, this)
+        	});
     	}
     },
     
@@ -113,7 +118,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	    failure: Ext.bind(this._loginFail, this)
     	});
     },
-    _loginCb: function(response)
+    _loginCb: function(response, donotactivate)
     {
     	this.getMain().unmask();
 
@@ -125,12 +130,12 @@ Ext.define('PiClim.controller.MainLogin', {
         else if (!object.initialized)
         {
         	this.getMain().getTabBar().getItems().get(2).show();
-        	this.getMain().setActiveItem(2);
+        	if (!donotactivate) this.getMain().setActiveItem(2);
         }
         else
         {
         	this.getMain().getTabBar().getItems().get(3).show();
-        	this.getMain().setActiveItem(3);
+        	if (!donotactivate) this.getMain().setActiveItem(3);
         }
     },
     _loginFail: function()
@@ -275,7 +280,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(5).hide();
     	this.getMain().getTabBar().getItems().get(6).hide();
     	this.getMain().getTabBar().getItems().get(0).show();
-   		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 2 : 1).show();
+   		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 3 : 1).show();
     	this.getMain().setActiveItem(0);
 
     	this.localStore.removeAll();
