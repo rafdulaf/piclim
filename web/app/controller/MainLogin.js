@@ -85,7 +85,14 @@ Ext.define('PiClim.controller.MainLogin', {
     	}
     	else if (PiClim.app.isWeb)
     	{
-    		PiClim.app.url = window.location.href;
+    		var serverUrl = window.location.href;
+    		var i = serverUrl.indexOf('?');
+    		if (i != -1)
+    		{
+    			serverUrl = serverUrl.substring(0, i);
+    		}
+    		PiClim.app.url = serverUrl;
+    		
         	this.getMain().setMasked({xtype: 'loadmask', message: I18n.MAIN_SERVER_CONNECT_CONNECTING});
         	Ext.Ajax.request({
         	    url: PiClim.app.url + "/service/version.php",
