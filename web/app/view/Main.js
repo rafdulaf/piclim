@@ -339,6 +339,7 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'list',
+                		        	store: 'userslist',
                 		        	itemTpl: '{fullname} - {email} ({login})'
                 		        }
                 		]
