@@ -10,7 +10,7 @@ Ext.define('PiClim.model.User', {
         
         proxy: {
             type: 'ajax',
-            url: 'service/users_list.php',
+            initial_url: 'service/users_list.php',
             reader: 'json'
           }
     }
