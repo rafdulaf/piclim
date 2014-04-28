@@ -5,7 +5,8 @@ Ext.define('PiClim.view.Main', {
         'Ext.TitleBar',
         'Ext.field.Password',
         'Ext.field.Checkbox',
-        'Ext.Video'
+        'Ext.Video',
+        'Ext.dataview.List'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -339,7 +340,6 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'list',
-                		        	store: 'userslist',
                 		        	itemTpl: '{fullname} - {email} ({login})'
                 		        }
                 		]
