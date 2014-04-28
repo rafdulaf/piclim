@@ -23,7 +23,8 @@ Ext.application({
     ],
 
     models: [
-        'Main'
+        'Main',
+        'User'
     ],
     
     views: [
