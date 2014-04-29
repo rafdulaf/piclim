@@ -1,7 +1,7 @@
 <?php
     include '../../src/authentication.php';
 
-    echo "{users: [";
+    echo "{success: true, users: [";
 
     foreach (getAllUsers() as $key => $user)
     {
