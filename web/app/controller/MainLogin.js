@@ -35,6 +35,7 @@ Ext.define('PiClim.controller.MainLogin', {
             home2Disconnect: 'main [name=home2] [name=title] [name=delete]',
             
             usersTab: 'main [name=users]',
+            usersList: 'main [name=users] list',
             
             settingsTab: 'main [name=settings]',
             settingsUpdateButton: 'main [name=settings] [name=update]'
