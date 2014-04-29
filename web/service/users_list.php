@@ -1,7 +1,7 @@
 <?php
     include '../../src/authentication.php';
 
-    echo "[";
+    echo "{users: [";
 
     foreach (getAllUsers() as $key => $user)
     {
@@ -12,5 +12,5 @@
         echo "{ login: '" . $user['login'] . "', fullname: '" . $user['fullname'] . "', email: '" . $user['email'] . "'}";
     }
 
-    echo "]";
+    echo "]}";
 ?>

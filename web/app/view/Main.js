@@ -340,6 +340,16 @@ Ext.define('PiClim.view.Main', {
                 		        },
                 		        {
                 		        	xtype: 'list',
+                		        	store: {
+                		        		autoLoad: false,
+                		        		proxy: {
+                		        			type: 'ajax',
+                		        			reader: {
+                		        				type: "json",
+                		        				rootProperty: "users"
+                		        			}
+                		        		}
+                		        	},
                 		        	itemTpl: '{fullname} - {email} ({login})'
                 		        }
                 		]

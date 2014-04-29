@@ -34,6 +34,8 @@ Ext.define('PiClim.controller.MainLogin', {
             home2Title: 'main [name=home2] [name=title]',
             home2Disconnect: 'main [name=home2] [name=title] [name=delete]',
             
+            usersTab: 'main [name=users]',
+            
             settingsTab: 'main [name=settings]',
             settingsUpdateButton: 'main [name=settings] [name=update]'
         },
@@ -245,7 +247,7 @@ Ext.define('PiClim.controller.MainLogin', {
     _userLoginSuccess: function(fullname)
     {
     	PiClim.model.User.getProxy()._url = PiClim.app.url + '/' + PiClim.model.User.getProxy().initialConfig.initial_url;
-
+    	
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
     	this.getMain().getTabBar().getItems().get(2).hide();
