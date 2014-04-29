@@ -344,6 +344,7 @@ Ext.define('PiClim.view.Main', {
                 		        		autoLoad: false,
                 		        		proxy: {
                 		        			type: 'ajax',
+                		                    initial_url: 'service/users_list.php',
                 		        			reader: {
                 		        				type: "json",
                 		        				rootProperty: "users"
