@@ -110,7 +110,7 @@
     function getAllUsers($start, $limit)
     {
     	echo "aaa" . $start . "bbb" . $limit;
-        return _sql("SELECT login, fullname, email FROM Users LIMIT start:=start,limit=:limit", array(':start' => $start, ':limit' => $limit)); 
+        return _sql("SELECT login, fullname, email FROM Users LIMIT start=:start,limit=:limit", array(':start' => $start, ':limit' => $limit)); 
     }
     
     function _getSalt($login)
