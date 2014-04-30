@@ -298,6 +298,7 @@ Ext.define('PiClim.controller.MainLogin', {
 		this.localStore.sync();
 
     	Ext.Msg.alert(I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TITLE, I18n.MAIN_USER_LOGINPANEL_CONNECT_FAILURE_TEXT);
+    	this.getMain().getTabBar().getItems().get(1).show();
     },
     
     onDisconnect: function()
