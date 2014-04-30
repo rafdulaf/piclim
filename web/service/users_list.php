@@ -3,7 +3,7 @@
 
     $users = getAllUsers();
     
-    echo "{success: true, totalCount: " . count($users) . ", users: [";
+    echo "{success: true, total: " . count($users) . ", users: [";
 
     foreach ($users as $key => $user)
     {
