@@ -3,5 +3,5 @@
 
     $result = update();
     
-    echo "{ result: true }";
+    echo "{ result: " . ($result == '' ? false : true) . " }";
 ?>
