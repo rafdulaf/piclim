@@ -1,7 +1,7 @@
 <?php
     include '../../src/authentication.php';
 
-    $users = getAllUsers();
+    $users = getAllUsers($_REQUEST['start'], $_REQUEST['limit']);
     
     echo "{success: true, total: " . count($users) . ", users: [";
 
