@@ -1,9 +1,11 @@
 <?php
     include '../../src/authentication.php';
 
-    echo "{success: true, users: [";
+    $users = getAllUsers();
+    
+    echo "{success: true, totalCount: " . count($users) . ", users: [";
 
-    foreach (getAllUsers() as $key => $user)
+    foreach ($users as $key => $user)
     {
         if ($key != 0)
         {
