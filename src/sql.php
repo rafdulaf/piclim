@@ -27,6 +27,7 @@
             $stmt->execute(); 
 $stmt->debugDumpParams ();
 var_dump($stmt->errorInfo());
+var_dump($stmt);
             return $stmt->fetchAll();
         }
         else
