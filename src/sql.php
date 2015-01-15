@@ -6,7 +6,7 @@
     function _sql($request, $args)
     {
         global $bdd;
-        $bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+
         $stmt = $bdd->prepare($request);
         
         foreach ($args as $key => $value)
@@ -16,7 +16,7 @@
         		var_dump("param ".$key." is int of ".$value);
         		$stmt->bindParam($key, $value, PDO::PARAM_INT);
         	}
-        	else 
+        	else
         	{
         		var_dump("param ".$key." is string of ".$value);
         		$stmt->bindParam($key, $value);
