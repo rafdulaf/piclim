@@ -9,7 +9,7 @@
         
         $stmt = $bdd->prepare($request);
 
-        if ($args[':start'])
+        if (in_array(':start', $args))
         {
         	var_dump($args);
         	$stmt->bindParam(":start", intval($args[':start']), PDO::PARAM_INT);
