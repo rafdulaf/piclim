@@ -20,7 +20,7 @@
         		$stmt->bindParam($key, $value);
         	}
         }
-
+var_dump($stmt);
         if(strrchr($request, 'SELECT'))
         {
             $stmt->execute(); 
