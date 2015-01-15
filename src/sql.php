@@ -8,23 +8,27 @@
         global $bdd;
         
         $stmt = $bdd->prepare($request);
-
-        	var_dump($args);
-        if (array_key_exists('start', $args))
-        {
-        	var_dump($args);
-        	$stmt->bindParam(":start", $args['start'], PDO::PARAM_INT);
-        	$stmt->bindParam(":limit", $args['limit'], PDO::PARAM_INT);
-        }
         
+        foreach ($args as $key => $value)
+        {
+        	if (is_int($value))
+        	{
+        		$stmt->bindParam($key, $value, PDO::PARAM_INT);
+        	}
+        	else
+        	{
+        		$stmt->bindParam($key, $value);
+        	}
+        }
+
         if(strrchr($request, 'SELECT'))
         {
-            $stmt->execute($args); 
+            $stmt->execute(); 
             return $stmt->fetchAll();
         }
         else
         {
-            return $stmt->execute($args); 
+            return $stmt->execute(); 
         }    
     }
 ?>
