@@ -23,7 +23,7 @@
         if(strrchr($request, 'SELECT'))
         {
             $stmt->execute(); 
-var_dump($stmt->errorInfo());
+$stmt->debugDumpParams ();
             return $stmt->fetchAll();
         }
         else
