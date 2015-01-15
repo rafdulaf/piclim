@@ -13,21 +13,16 @@
         {
         	if (is_int($value))
         	{
-        		var_dump("param ".$key." is int of ".$value);
         		$stmt->bindValue($key, $value, PDO::PARAM_INT);
         	}
         	else
         	{
-        		var_dump("param ".$key." is string of ".$value);
         		$stmt->bindValue($key, $value);
         	}
         }
         if(strrchr($request, 'SELECT'))
         {
             $stmt->execute(); 
-$stmt->debugDumpParams ();
-var_dump($stmt->errorInfo());
-var_dump($stmt);
             return $stmt->fetchAll();
         }
         else
