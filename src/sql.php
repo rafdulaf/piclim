@@ -6,7 +6,7 @@
     function _sql($request, $args)
     {
         global $bdd;
-        
+        $bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
         $stmt = $bdd->prepare($request);
         
         foreach ($args as $key => $value)
