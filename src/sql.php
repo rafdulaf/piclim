@@ -9,8 +9,10 @@
         
         $stmt = $bdd->prepare($request);
 
+        	var_dump($args);
         if (array_key_exists('start', $args))
         {
+        	var_dump($args);
         	$stmt->bindParam(":start", intval($args['start']), PDO::PARAM_INT);
         	$stmt->bindParam(":limit", intval($args['limit']), PDO::PARAM_INT);
         }
