@@ -8,6 +8,12 @@
         global $bdd;
         
         $stmt = $bdd->prepare($request);
+
+        if ($args[':start'])
+        {
+        	$stmt->bindParam(":start", intval($args[':start']), PDO::PARAM_INT);
+        	$stmt->bindParam(":limit", intval($args[':limit']), PDO::PARAM_INT);
+        }
         
         if(strrchr($request, 'SELECT'))
         {
