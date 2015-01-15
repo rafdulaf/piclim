@@ -11,6 +11,7 @@
 
         if ($args[':start'])
         {
+        	var_dump($args);
         	$stmt->bindParam(":start", intval($args[':start']), PDO::PARAM_INT);
         	$stmt->bindParam(":limit", intval($args[':limit']), PDO::PARAM_INT);
         }
