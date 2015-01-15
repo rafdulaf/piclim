@@ -14,18 +14,16 @@
         	if (is_int($value))
         	{
         		$stmt->bindParam($key, $value, PDO::PARAM_INT);
-echo ("bind ".$key." as int ".$value);
         	}
         	else
         	{
-echo ("bind ".$key." as string ".$value);
         		$stmt->bindParam($key, $value);
         	}
         }
-var_dump($stmt);
         if(strrchr($request, 'SELECT'))
         {
             $stmt->execute(); 
+var_dump($stmt->errorInfo());
             return $stmt->fetchAll();
         }
         else
