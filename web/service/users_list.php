@@ -3,6 +3,8 @@
 
     $users = getAllUsers($_REQUEST['start'], $_REQUEST['limit']);
     
+    var_dump ($users);
+    
     echo "{success: true, total: " . count($users) . ", users: [";
 
     foreach ($users as $key => $user)
