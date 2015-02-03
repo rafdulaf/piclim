@@ -352,6 +352,7 @@ Ext.define('PiClim.view.Main', {
                 		        			}
                 		        		}
                 		        	},
+                		        	height: 200,
                 		        	itemTpl: '{fullname} - {email} ({login})'
                 		        }
                 		]
