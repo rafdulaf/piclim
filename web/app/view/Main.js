@@ -337,7 +337,7 @@ Ext.define('PiClim.view.Main', {
                 		items: [
                 		        {
                 		        	xtype: 'titlebar',
-                		        	title: I18n.MAIN_USER_LOGINPANEL_TITLE
+                		        	title: I18n.MAIN_USERS_LIST_HEADER
                 		        },
                 		        {
                 		        	xtype: 'list',
@@ -353,7 +353,7 @@ Ext.define('PiClim.view.Main', {
                 		        			}
                 		        		}
                 		        	},
-                		        	height: 200,
+                		        	flex: 1,
                 		        	itemTpl: '{fullname} - {email} ({login})'
                 		        }
                 		]
