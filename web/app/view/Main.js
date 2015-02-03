@@ -327,6 +327,7 @@ Ext.define('PiClim.view.Main', {
                 			align: 'center',
                 			pack: 'center'
                 		},
+                		height: '80%',
                 		
                 		defaults: {
                 			maxWidth: '720px',
