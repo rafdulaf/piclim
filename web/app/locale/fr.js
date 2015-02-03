@@ -69,6 +69,7 @@ I18n = {
 	MAIN_USERS_TITLE_SHORT: "Utilisateurs",
 	MAIN_USERS_TITLE_LONG: "Gestion des utilisateurs",
 	MAIN_USERS_TEXT: "Voici les utilisateurs existants sur le serveur :",
+	MAIN_USERS_LIST_HEADER: "Liste des utilisateurs",
 
 	MAIN_SETTINGS_TITLE_SHORT: "Paramètres",
 	MAIN_SETTINGS_TITLE_LONG: "Réglages de l'application",
