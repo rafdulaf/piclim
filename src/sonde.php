@@ -17,6 +17,7 @@
 	        }
 	        else
 	        {
+	        	$Fichier = "";
 	            while(!feof($fp)) 
 	            {
 	               $Ligne = fgets($fp,255);
