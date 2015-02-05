@@ -9,7 +9,7 @@
     $i = 1;
     foreach ($temps as $temp)
     {
-    	if ($i != 0)
+    	if ($i != 1)
     	{
     		$sql .= "," ;
     	}
@@ -22,7 +22,7 @@
     $i = 1;
     foreach ($temps as $temp)
     {
-    	if ($i != 0)
+    	if ($i != 1)
     	{
     		$sql .= "," ;
     	}
@@ -34,9 +34,9 @@
     
     $values = array();
     $i = 1;
-    foreach($temps as $temp)
+    foreach($temps as $temp=>$value)
     {
-    	$values[":temperature_".$i++] = $temp;
+    	$values[":temperature_".$i++] = intval($value*10);
     }
     
     _sql($sql, $values);
