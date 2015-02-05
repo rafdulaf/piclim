@@ -30,5 +30,7 @@
 	            $temperatures[] = round($regs[1]/100)/10; 
 	        }
 	    }
+	    
+	    return $temperatures;
     }
 ?>
