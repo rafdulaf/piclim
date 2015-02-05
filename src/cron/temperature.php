@@ -1,6 +1,6 @@
 <?php
-    include '../../src/sonde.php';
-    include '../../src/sql.php';
+    include '../sonde.php';
+    include '../sql.php';
     
     $temps = getTemperatures();
     
