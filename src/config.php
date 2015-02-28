@@ -4,5 +4,5 @@
     $BDD_user="piclim";
     $BDD_pass="passwordhere";
     
-    $SONDES=array("10-00080283b869");
+    $SONDES=array("10-000000000000");
 ?>
