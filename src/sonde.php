@@ -6,7 +6,7 @@
 	 */
 	function getTemperatures()
     {
-        global $SONDES;
+        global $SONDES, $WEATHER;
 
         $temperatures = array();
         
