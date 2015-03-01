@@ -1,19 +1,19 @@
-<!--
-    Get the temperature
--->
 <?php
-    include 'config.php';
+	include 'config.php';
 
-    function getTemperatures()
+	/*
+	 *  Get the temperature
+	 */
+	function getTemperatures()
     {
         global $SONDES;
 
         $temperatures = array();
-        foreach ($SONDES as $SONDE)
+        foreach ($SONDES as $Name => $Sonde)
         {
-	        if (!$fp = fopen("/sys/bus/w1/devices/" . $SONDE . "/w1_slave", "r"))
+	        if (!$fp = fopen("/sys/bus/w1/devices/" . $Sonde . "/w1_slave", "r"))
 	        {
-	            throw new Exception('Can not get current temperature');
+	            throw new Exception('Can not get current temperature for '.$Name.' => '.$Sonde);
 	        }
 	        else
 	        {
@@ -27,7 +27,7 @@
 	        
 	            eregi("t=([0-9]+)", $Fichier, $regs);
 
-	            $temperatures[] = round($regs[1]/100)/10; 
+	            $temperatures[$Name] = round($regs[1]/100)/10; 
 	        }
 	    }
 	    
