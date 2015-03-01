@@ -1,11 +1,20 @@
 <?php
 	include '../sonde.php';
-
+	
+	// Current path
+	$CURRENT_PATH = realpath(dirname(__FILE__));
+	
+	// If rrdfile exists => remove it and remove cron
+	unlink($CURRENT_PATH/temperatures.rrd);
+	
+	
+	// CREATE RRD FILE
+	$EVERY=5; // every 5 minutes
 	$MIN_TEMPERATURE=-60;
 	$MAX_TEMPERATURE=60;
-	$STEP=5*60; // every 5 minutes
+	$STEP=$EVERY*60;
 	
-	$cmd = "rrdtool create temperatures.rrd --step $STEP ";
+	$cmd = "rrdtool create $CURRENT_PATH/temperatures.rrd --step $STEP ";
 	
 	$temperatures = getTemperatures();
 	foreach ($temperatures as $name => $temp)
@@ -20,7 +29,19 @@
 	// Remember every day (24 * 12*5 minutes) during 5 years (365*5)
 	$cmd .= "RRA:MIN:0.5:288:1825 RRA:AVERAGE:0.5:288:1825 RRA:MAX:0.5:288:1825 ";
 
+	echo("CREATING RDD FILE");
 	echo($cmd);
 	echo("\n");
 	echo(shell_exec($cmd));
+	echo("\n");
+	echo("\n");
+	
+	// CREATE CRON
+	echo("CREATING CRON TASK");
+	$cmd = "crontab -l | { cat; echo \"*/$EVERY 0 0 0 0 cd $CURRENT_PATH ; php -f cron.php >/dev/null 2>&1 \"; } | crontab -";
+	echo($cmd);
+	echo("\n");
+	echo(shell_exec($cmd));
+	echo("\n");
+	echo("\n");
 ?>
