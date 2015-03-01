@@ -13,7 +13,7 @@
         $raw_result = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$WEATHER);
         var_dump($raw_result);
         
-        if ($raw_result == false || $result["main"]["temp"] == 0)
+        if ($raw_result == false)
         {
         	$external_temperature = "U";
         }
