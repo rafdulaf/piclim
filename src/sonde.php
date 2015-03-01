@@ -9,6 +9,9 @@
         global $SONDES;
 
         $temperatures = array();
+        
+        $temperatures["out"] = "U"; // U for unknown
+        
         foreach ($SONDES as $Name => $Sonde)
         {
 	        if (!$fp = fopen("/sys/bus/w1/devices/" . $Sonde . "/w1_slave", "r"))

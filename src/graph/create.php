@@ -6,7 +6,6 @@
 	$STEP=5*60; // every 5 minutes
 	
 	$cmd = "rrdtool create temperatures.rrd --step $STEP ";
-	$cmd .= "DS:temp_out:GAUGE:".($STEP*2).":$MIN_TEMPERATURE:$MAX_TEMPERATURE ";
 	
 	$temperatures = getTemperatures();
 	foreach ($temperatures as $name => $temp)
