@@ -12,8 +12,16 @@
         
         $raw_result = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$WEATHER);
         var_dump($raw_result);
-        $result = json_decode($raw_result, true);
-        $external_temperature = $result["main"]["temp"] - 273.15;
+        
+        if ($raw_result == false || $result["main"]["temp"] == 0)
+        {
+        	$external_temperature = "U";
+        }
+        else
+        {
+	        $result = json_decode($raw_result, true);
+	        $external_temperature = $result["main"]["temp"] - 273.15;
+        }
         $temperatures["out"] = $external_temperature;
         
         foreach ($SONDES as $Name => $Sonde)
