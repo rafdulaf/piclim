@@ -11,8 +11,8 @@
         $temperatures = array();
         
         $raw_result = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$WEATHER);
-        $result = json_decode($raw_result);
-        $external_temperature = $result.main.temp - 273.15;
+        $result = json_decode($raw_result, true);
+        $external_temperature = $result["main"]["temp"] - 273.15;
         $temperatures["out"] = $external_temperature;
         
         foreach ($SONDES as $Name => $Sonde)
