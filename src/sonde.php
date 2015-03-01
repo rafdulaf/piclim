@@ -33,7 +33,7 @@
 	        
 	            eregi("t=([0-9]+)", $Fichier, $regs);
 
-	            $temperatures[$Name] = round($regs[1]/100)/10; 
+	            $temperatures[$Name] = $regs[1]/1000; 
 	        }
 	    }
 	    
