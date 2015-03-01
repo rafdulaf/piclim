@@ -5,8 +5,17 @@
 	$CURRENT_PATH = realpath(dirname(__FILE__));
 	
 	// If rrdfile exists => remove it and remove cron
+	echo("REMOVING EXISTING RRD FILE");
 	unlink($CURRENT_PATH/temperatures.rrd);
 	
+	// CREATE CRON
+	echo("REMOVING EXISTING CRON TASK");
+	$cmd = "crontab -l | grep -v \"$CURRENT_PATH\" | crontab -";
+	echo($cmd);
+	echo("\n");
+	echo(shell_exec($cmd));
+	echo("\n");
+	echo("\n");
 	
 	// CREATE RRD FILE
 	$EVERY=5; // every 5 minutes
