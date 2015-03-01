@@ -52,7 +52,7 @@
 	
 	// CREATE CRON
 	echo("CREATING CRON TASK");
-	$cmd = "crontab -l | { cat; echo \"*/$EVERY 0 0 0 0 cd $CURRENT_PATH ; php -f cron.php >/dev/null 2>&1 \"; } | crontab -";
+	$cmd = "crontab -l | { cat; echo \"*/$EVERY * * * * cd $CURRENT_PATH ; php -f cron.php >/dev/null 2>&1 \"; } | crontab -";
 	echo($cmd);
 	echo("\n");
 	echo(shell_exec($cmd));
