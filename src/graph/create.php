@@ -6,11 +6,16 @@
 	
 	// If rrdfile exists => remove it and remove cron
 	echo("REMOVING EXISTING RRD FILE");
-	unlink($CURRENT_PATH/temperatures.rrd);
+	echo("\n");
+	unlink($CURRENT_PATH."/temperatures.rrd");
+	echo("\n");
+	echo("\n");
 	
 	// CREATE CRON
-	echo("REMOVING EXISTING CRON TASK");
 	$cmd = "crontab -l | grep -v \"$CURRENT_PATH\" | crontab -";
+
+	echo("REMOVING EXISTING CRON TASK");
+	echo("\n");
 	echo($cmd);
 	echo("\n");
 	echo(shell_exec($cmd));
