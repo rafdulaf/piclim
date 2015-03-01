@@ -6,12 +6,12 @@
 	$STEP=5*60; // every 5 minutes
 	
 	$cmd = "rrdtool create temperatures.rrd --step $STEP ";
-	$cmd .= "DS:temp_out:GAUGE:.".($STEP*2).".:$MIN_TEMPERATURE:$MAX_TEMPERATURE ";
+	$cmd .= "DS:temp_out:GAUGE:".($STEP*2).":$MIN_TEMPERATURE:$MAX_TEMPERATURE ";
 	
 	$temperatures = getTemperatures();
 	foreach ($temperatures as $name => $temp)
 	{
-		$cmd .= "DS:temp_".$name.":GAUGE:".($STEP*2).".:$MIN_TEMPERATURE:$MAX_TEMPERATURE ";
+		$cmd .= "DS:temp_".$name.":GAUGE:".($STEP*2).":$MIN_TEMPERATURE:$MAX_TEMPERATURE ";
 	}
 	
 	// Remember every 5 minutes during 7 days (7*24*60/5)
