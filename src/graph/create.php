@@ -44,6 +44,7 @@
 	$cmd .= "RRA:MIN:0.5:288:1825 RRA:AVERAGE:0.5:288:1825 RRA:MAX:0.5:288:1825 ";
 
 	echo("CREATING RDD FILE");
+	echo("\n");
 	echo($cmd);
 	echo("\n");
 	echo(shell_exec($cmd));
@@ -51,8 +52,9 @@
 	echo("\n");
 	
 	// CREATE CRON
-	echo("CREATING CRON TASK");
 	$cmd = "crontab -l | { cat; echo \"*/$EVERY * * * * cd $CURRENT_PATH ; php -f cron.php >/dev/null 2>&1 \"; } | crontab -";
+	echo("CREATING CRON TASK");
+	echo("\n");
 	echo($cmd);
 	echo("\n");
 	echo(shell_exec($cmd));
