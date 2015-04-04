@@ -320,24 +320,10 @@ Ext.define('PiClim.view.Main', {
                     {
                         xtype: 'chart',
                         flex: 1,
-                        store: {
+                        store: Ext.create("PiClim.store.Temperatures", {
                             fields: ['time', 'MIN_salon', 'AVG_salon', 'MAX_salon'],
-                            proxy: {
-                                type: "ajax",
-                                url : "service/rrd.php",
-                                reader: {
-                                    type: "json",
-                                    rootProperty: "data"
-                                }
-                            },
-                            autoLoad: true,
-                            listeners: {
-                                'beforeload': function()
-                                {
-                                    debugger
-                                }
-                            }
-                        },
+                            autoLoad: true
+                        }),
                         axes: [
                             {
                                 type: 'numeric',
