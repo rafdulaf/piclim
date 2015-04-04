@@ -3,5 +3,6 @@
 
     include '../../src/graph/temperatures.php';
     
+    echo "jeronimo";
     echo temperaturesJSON();
 ?>
