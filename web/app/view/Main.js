@@ -294,6 +294,7 @@ Ext.define('PiClim.view.Main', {
                 	},
                     {
                         xtype: 'chart',
+                        flex: 1,
                         store: {
                             fields: ['time', 'open', 'high', 'low', 'close'],
                             proxy: {
