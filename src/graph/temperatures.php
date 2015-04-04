@@ -64,7 +64,7 @@
 			
 			foreach ($obj->meta->legend as $legendIndex => $legendName)
 			{
-				$newArray[$legendName] = $array[$legendIndex] != null ? $array[$legendIndex] : 0;
+				$newArray[$legendName] = $array[$legendIndex];
 			}
 			
 			$newObj['data'][] = $newArray;	
