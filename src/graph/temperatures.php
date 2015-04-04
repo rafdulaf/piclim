@@ -1,7 +1,7 @@
 <?php
 	include '../sonde.php';
 
-	//function temperaturesJSON()
+	function temperaturesJSON()
 	{
 		// Current path
 		$CURRENT_PATH = realpath(dirname(__FILE__));
@@ -25,7 +25,6 @@
 			$i++;
 		}
 		
-//		"rrdtool xport --start -300800 --end now --json DEF:x1=temperatures.rrd:temp_salon:MIN DEF:x2=temperatures.rrd:temp_salon:AVERAGE DEF:x3=temperatures.rrd:temp_salon:MAX DEF:y1=temperatures.rrd:temp_out:MIN DEF:y2=temperatures.rrd:temp_out:AVERAGE DEF:y3=temperatures.rrd:temp_out:MAX XPORT:x1:salonMin XPORT:x2:salonAvg XPORT:x3:salonMax XPORT:y1:outMin XPORT:y2:outAvg XPORT:y3:outMax > temperatures.json";
-		shell_exec($cmd);
+		return shell_exec($cmd);
 	}
 ?>
