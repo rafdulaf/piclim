@@ -1,3 +1,4 @@
+debugger
 Ext.define('PiClim.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
@@ -322,7 +323,7 @@ Ext.define('PiClim.view.Main', {
                         xtype: 'chart',
                         flex: 1,
                         store: {
-                            fields: ['time', 'open', 'high', 'low', 'close'],
+                            fields: ['time', 'MIN_salon', 'AVG_salon', 'MAX_salon'],
                             proxy: {
                                 type: "ajax",
                                 url : "service/rrd.php",
@@ -337,12 +338,14 @@ Ext.define('PiClim.view.Main', {
                             {
                                 type: 'numeric',
                                 position: 'left',
-                                fields: ['open', 'high', 'low', 'close'],
+                                fields: ['MIN_salon', 'AVG_salon', 'MAX_salon'],
+                                
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TEMP,
                                     fontSize: 15
                                 },
                                 grid: true,
+                                
                                 minimum: -10,
                                 maximum: 40
                             }, 
@@ -363,23 +366,10 @@ Ext.define('PiClim.view.Main', {
                             }
                         ],
                         series: [{
-                            type: 'candlestick',
+                            type: 'line',
                             xField: 'time',
-                            openField: 'open',
-                            highField: 'high',
-                            lowField: 'low',
-                            closeField: 'close',
-                            style: {
-                                ohlcType: 'ohlc',
-                                dropStyle: {
-                                    fill: 'rgb(237, 123, 43)',
-                                    stroke: 'rgb(237, 123, 43)'
-                                },
-                                raiseStyle: {
-                                    fill: 'rgb(55, 153, 19)',
-                                    stroke: 'rgb(55, 153, 19)'
-                                }
-                            },
+                            yField: 'MIN_salon',
+                            
                             aggregator: {
                                 strategy: 'time'
                             }
