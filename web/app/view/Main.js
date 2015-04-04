@@ -322,13 +322,7 @@ Ext.define('PiClim.view.Main', {
                         flex: 1,
                         store: Ext.create("PiClim.store.Temperatures", {
                             fields: ['time', 'MIN_salon', 'AVG_salon', 'MAX_salon'],
-                            autoLoad: true,
-                            
-                            listeners: {
-                                'beforeload': function() {
-                                    debugger
-                                }
-                            }
+                            autoLoad: true
                         }),
                         axes: [
                             {
