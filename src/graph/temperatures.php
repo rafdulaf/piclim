@@ -29,7 +29,7 @@
 		$cmd = "rrdtool xport --start -300800 --end now --json ";
 		
 		$i = 1;
-        foreach ($SONDES as $Name => $Sonde)
+        foreach ($SONDES as $name => $Sonde)
 		{
 			$cmd .= _temperaturesJSON($i, $name);
 			$i++;
