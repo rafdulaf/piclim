@@ -37,13 +37,13 @@
 		$cmd .= _temperaturesJSON($i, "out");
 
 		$val = shell_exec($cmd);
-		$val = str_replace('data', '"data"', $val);
-		$val = str_replace('about', '"about"', $val);
-		$val = str_replace('meta', '"meta"', $val);
-		$val = str_replace('start', '"start"', $val);
-		$val = str_replace('step', '"step"', $val);
-		$val = str_replace('end', '"end"', $val);
-		$val = str_replace('legend', '"legend"', $val);
+		$val = str_replace(' data:', ' "data":', $val);
+		$val = str_replace(' about:', ' "about":', $val);
+		$val = str_replace(' meta:', ' "meta":', $val);
+		$val = str_replace(' start:', ' "start":', $val);
+		$val = str_replace(' step:', ' "step":', $val);
+		$val = str_replace(' end:', ' "end":', $val);
+		$val = str_replace(' legend:', ' "legend":', $val);
 		return $val;
 	}
 ?>
