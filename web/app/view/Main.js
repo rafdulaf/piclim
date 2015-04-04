@@ -313,25 +313,25 @@ Ext.define('PiClim.view.Main', {
                                 position: 'left',
                                 fields: ['open', 'high', 'low', 'close'],
                                 title: {
-                                    text: 'Sample Values',
+                                    text: I18n.MAIN_TEMPERATURES_AXE_TEMP,
                                     fontSize: 15
                                 },
                                 grid: true,
-                                minimum: 560,
-                                maximum: 640
+                                minimum: -10,
+                                maximum: 40
                             }, 
                             {
                                 type: 'time',
                                 position: 'bottom',
                                 fields: ['time'],
-                                fromDate: new Date('Dec 31 2009'),
-                                toDate: new Date('Jan 6 2010'),
+                                fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -7),
+                                toDate: new Date(),
                                 title: {
-                                    text: 'Sample Values',
+                                    text: I18n.MAIN_TEMPERATURES_AXE_TIME,
                                     fontSize: 15
                                 },
                                 style: {
-                                    axisLine: false
+                                    axisLine: true
                                 }
                             }
                         ],
