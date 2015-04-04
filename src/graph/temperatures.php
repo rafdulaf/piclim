@@ -64,7 +64,7 @@
 				$newArray[$legendName] = $array[$legendIndex];
 			}
 			
-			$newObj['data'][] = $newArray;	
+			$newObj['data'][] = $newArray * 1000;	
 			
 			$currentTime += $step;
 		}
