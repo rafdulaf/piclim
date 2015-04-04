@@ -1,5 +1,5 @@
 <?php
-	include 'sonde.php';
+	include '../sonde.php';
 
 	function temperaturesJSON()
 	{
