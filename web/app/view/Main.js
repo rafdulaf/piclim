@@ -258,8 +258,7 @@ Ext.define('PiClim.view.Main', {
                 		        }
                 		]
                 	}
-                ],
-
+                ]
             },
 
             {
@@ -272,7 +271,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
         		
                 items: [
@@ -292,9 +291,73 @@ Ext.define('PiClim.view.Main', {
                 	{
                 		xtype: 'component',
                 		html: I18n.MAIN_WELCOME_TEXT
-                	}
-                ],
-
+                	},
+                    {
+                        xtype: 'chart',
+                        store: {
+                            fields: ['time', 'open', 'high', 'low', 'close'],
+                            proxy: {
+                                type: "ajax",
+                                url : "service/rrd.php",
+                                reader: {
+                                    type: "json",
+                                    rootProperty: "data"
+                                }
+                            },
+                            autoLoad: true
+                        },
+                        axes: [
+                            {
+                                type: 'numeric',
+                                position: 'left',
+                                fields: ['open', 'high', 'low', 'close'],
+                                title: {
+                                    text: 'Sample Values',
+                                    fontSize: 15
+                                },
+                                grid: true,
+                                minimum: 560,
+                                maximum: 640
+                            }, 
+                            {
+                                type: 'time',
+                                position: 'bottom',
+                                fields: ['time'],
+                                fromDate: new Date('Dec 31 2009'),
+                                toDate: new Date('Jan 6 2010'),
+                                title: {
+                                    text: 'Sample Values',
+                                    fontSize: 15
+                                },
+                                style: {
+                                    axisLine: false
+                                }
+                            }
+                        ],
+                        series: [{
+                            type: 'candlestick',
+                            xField: 'time',
+                            openField: 'open',
+                            highField: 'high',
+                            lowField: 'low',
+                            closeField: 'close',
+                            style: {
+                                ohlcType: 'ohlc',
+                                dropStyle: {
+                                    fill: 'rgb(237, 123, 43)',
+                                    stroke: 'rgb(237, 123, 43)'
+                                },
+                                raiseStyle: {
+                                    fill: 'rgb(55, 153, 19)',
+                                    stroke: 'rgb(55, 153, 19)'
+                                }
+                            },
+                            aggregator: {
+                                strategy: 'time'
+                            }
+                        }]
+                    }
+                ]
             },
             {
                 title: I18n.MAIN_USERS_TITLE_SHORT,
@@ -306,7 +369,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
 
         		items: [
