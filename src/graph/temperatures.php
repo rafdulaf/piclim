@@ -35,7 +35,15 @@
 			$i++;
 		}
 		$cmd .= _temperaturesJSON($i, "out");
-		
-		return shell_exec($cmd);
+
+		$val = shell_exec($cmd);
+		$val = str_replace($val, 'data', '"data"');
+		$val = str_replace($val, 'about', '"about"');
+		$val = str_replace($val, 'meta', '"meta"');
+		$val = str_replace($val, 'start', '"start"');
+		$val = str_replace($val, 'step', '"step"');
+		$val = str_replace($val, 'end', '"end"');
+		$val = str_replace($val, 'legend', '"legend"');
+		return $val;
 	}
 ?>
