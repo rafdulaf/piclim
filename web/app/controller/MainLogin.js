@@ -247,7 +247,7 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _userLoginSuccess: function(fullname)
     {
-    	this.getUsersList().getStore().getProxy()._url = PiClim.app.url + '/' + this.getUsersList().getStore().getProxy().initialConfig.initial_url;
+    	this.getUsersList().getStore().getProxy()._url = PiClim.app.url + '/' + this.getUsersList().getStore().getProxy().initialConfig.url;
     	this.getUsersList().getStore().load();
     	
     	this.getMain().getTabBar().getItems().get(0).hide();
