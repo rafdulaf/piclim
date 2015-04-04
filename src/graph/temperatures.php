@@ -25,7 +25,7 @@
 	{
 		global $SONDES;
 		
-		// Create new export
+		// Let us export at the json format
 		$cmd = "rrdtool xport --start -300800 --end now --json ";
 		
 		$i = 1;
@@ -37,6 +37,8 @@
 		$cmd .= _temperaturesJSON($i, "out");
 
 		$val = shell_exec($cmd);
+		
+		// Let us repair the json, so it will effectively be a json
 		$val = str_replace(' data:', ' "data":', $val);
 		$val = str_replace(' about:', ' "about":', $val);
 		$val = str_replace(' meta:', ' "meta":', $val);
@@ -46,6 +48,7 @@
 		$val = str_replace(' legend:', ' "legend":', $val);
 		$val = str_replace("'", '"', $val);
 		
+		// Now let us convert to the json format for extjs
 		$obj = json_decode($val);
 
 		$startTime = $obj->meta->start;
@@ -68,9 +71,9 @@
 			
 			$currentTime += $step;
 		}
-		
+
+		// ok we can return it now
 		$retVal = json_encode($newObj);
-		
 		return $retVal;
 	}
 ?>
