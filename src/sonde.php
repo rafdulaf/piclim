@@ -39,7 +39,7 @@
 	            }
 	            fclose($fp); // On ferme le fichier
 	        
-	            eregi("t=([0-9]+)", $Fichier, $regs);
+	            preg_match("/t=([0-9]+)/", $Fichier, $regs);
 
 	            $temperatures[$Name] = $regs[1]/1000; 
 	        }
