@@ -360,9 +360,23 @@ Ext.define('PiClim.view.Main', {
                             xField: 'time',
                             yField: 'MIN_salon',
                             
+                            highlight: {
+                                size: 7,
+                                radius: 7
+                            },
+                            style: {
+                                stroke: 'rgb(143,203,203)'
+                            },
+                            marker: {
+                                type: 'path',
+                                path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
+                                stroke: 'blue',
+                                lineWidth: 0
+                            }/*,
+                            
                             aggregator: {
                                 strategy: 'time'
-                            }
+                            }*/
                         }]
                     }
                 ]
