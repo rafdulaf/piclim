@@ -69,7 +69,7 @@ I18n = {
     MAIN_TEMPERATURES_TITLE_SHORT: "Temperatures",
     MAIN_TEMPERATURES_TITLE_LONG: "Historique des températures",
     MAIN_TEMPERATURES_TEXT: "Voici l'historique des températures",
-    MAIN_TEMPERATURES_AXE_TEMP: "Température",
+    MAIN_TEMPERATURES_AXE_TEMP: "Température (°C)",
     MAIN_TEMPERATURES_AXE_TIME: "Date",
     
 	MAIN_USERS_TITLE_SHORT: "Utilisateurs",
