@@ -66,6 +66,9 @@ I18n = {
 	MAIN_WELCOME2_TITLE_LONG_1: "Bienvenue",
 	MAIN_WELCOME2_TITLE_LONG_2: "sur PiClim",
     
+    MAIN_TEMPERATURES_TITLE_SHORT: "Temperatures",
+    MAIN_TEMPERATURES_TITLE_LONG: "Historique des températures",
+    MAIN_TEMPERATURES_TEXT: "Voici l'historique des températures",
     MAIN_TEMPERATURES_AXE_TEMP: "Température",
     MAIN_TEMPERATURES_AXE_TIME: "Date",
     

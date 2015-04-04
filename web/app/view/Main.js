@@ -291,7 +291,33 @@ Ext.define('PiClim.view.Main', {
                 	{
                 		xtype: 'component',
                 		html: I18n.MAIN_WELCOME_TEXT
-                	},
+                	}
+                ]
+            },
+
+            {
+                title: I18n.MAIN_TEMPERATURES_TITLE_SHORT,
+                iconCls: 'home',
+                name: 'temperatures',
+                hidden: true,
+
+                styleHtmlContent: true,
+                scrollable: null,
+
+                layout: {
+                    type: 'vbox'
+                },
+                
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: I18n.MAIN_TEMPERATURES_TITLE_LONG
+                    },
+                    {
+                        xtype: 'component',
+                        html: I18n.MAIN_TEMPERATURES_TEXT
+                    },
                     {
                         xtype: 'chart',
                         flex: 1,
@@ -361,6 +387,7 @@ Ext.define('PiClim.view.Main', {
                     }
                 ]
             },
+            
             {
                 title: I18n.MAIN_USERS_TITLE_SHORT,
                 iconCls: 'user',
