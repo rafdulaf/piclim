@@ -19,6 +19,7 @@
 	
 	   $proc = new XSLTProcessor();
 	   $proc->importStylesheet($xslDoc);
+	   
 	   return $proc->transformToXML($xmlDoc);
 	}
 ?>
