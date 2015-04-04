@@ -297,7 +297,7 @@ Ext.define('PiClim.view.Main', {
 
             {
                 title: I18n.MAIN_TEMPERATURES_TITLE_SHORT,
-                iconCls: 'home',
+                iconCls: 'time',
                 name: 'temperatures',
                 hidden: true,
 

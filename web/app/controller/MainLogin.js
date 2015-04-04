@@ -257,6 +257,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(4).show();
     	this.getMain().getTabBar().getItems().get(5).show();
     	this.getMain().getTabBar().getItems().get(6).show();
+        this.getMain().getTabBar().getItems().get(7).show();
     	this.getHome2Title().setTitle(I18n.MAIN_WELCOME2_TITLE_LONG_1 + " " + fullname + " " + I18n.MAIN_WELCOME2_TITLE_LONG_2);
     	this.getMain().setActiveItem(4);
     },
@@ -305,6 +306,7 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getMain().getTabBar().getItems().get(4).hide();
     	this.getMain().getTabBar().getItems().get(5).hide();
     	this.getMain().getTabBar().getItems().get(6).hide();
+        this.getMain().getTabBar().getItems().get(7).hide();
     	this.getMain().getTabBar().getItems().get(0).show();
    		this.getMain().getTabBar().getItems().get(PiClim.app.isWeb ? 3 : 1).show();
     	this.getMain().setActiveItem(0);
