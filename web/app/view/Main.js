@@ -330,6 +330,7 @@ Ext.define('PiClim.view.Main', {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TIME,
                                     fontSize: 15
                                 },
+                                grid: true,
                                 style: {
                                     axisLine: true
                                 }
