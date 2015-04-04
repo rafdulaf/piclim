@@ -1,4 +1,3 @@
-debugger
 Ext.define('PiClim.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
@@ -98,8 +97,7 @@ Ext.define('PiClim.view.Main', {
                 		        }
                 		]
                 	}
-                ],
-
+                ]
             },
 
             {
@@ -112,7 +110,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
         		
                 items: [
@@ -332,7 +330,13 @@ Ext.define('PiClim.view.Main', {
                                     rootProperty: "data"
                                 }
                             },
-                            autoLoad: true
+                            autoLoad: true,
+                            listeners: {
+                                'beforeload': function()
+                                {
+                                    debugger
+                                }
+                            }
                         },
                         axes: [
                             {
