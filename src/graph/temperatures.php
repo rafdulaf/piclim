@@ -44,6 +44,31 @@
 		$val = str_replace(' step:', ' "step":', $val);
 		$val = str_replace(' end:', ' "end":', $val);
 		$val = str_replace(' legend:', ' "legend":', $val);
-		return $val;
+		
+		$obj = json_decode($val);
+
+		$startTime = $obj->meta->start;
+		$step = $obj->meta->step;
+		
+		$currentTime = $startTime;
+		
+		$newObj = array( "data" => array() );
+		foreach ($obj->data as $index => $array)
+		{
+			$newArray = array( "time" => $currentTime );
+			
+			foreach ($obj->meta->legend as $legendIndex => $legendName)
+			{
+				$newArray[$legendName] = $array[$legendIndex];
+			}
+			
+			$newObj->data[] = $newArray;	
+			
+			$currentTime += $step;
+		}
+		
+		$retVal = json_encode($newObj);
+		
+		return $retVal;
 	}
 ?>
