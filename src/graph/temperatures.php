@@ -57,14 +57,14 @@
 		
 		foreach ($obj->data as $index => $array)
 		{
-			$newArray = array( "time" => $currentTime );
+			$newArray = array( "time" => $currentTime*1000 );
 			
 			foreach ($obj->meta->legend as $legendIndex => $legendName)
 			{
 				$newArray[$legendName] = $array[$legendIndex];
 			}
 			
-			$newObj['data'][] = $newArray * 1000;	
+			$newObj['data'][] = $newArray;	
 			
 			$currentTime += $step;
 		}
