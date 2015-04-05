@@ -6,7 +6,12 @@ Ext.define('PiClim.view.Main', {
         'Ext.field.Password',
         'Ext.field.Checkbox',
         'Ext.Video',
-        'Ext.dataview.List'
+        'Ext.dataview.List',
+        'PiClim.store.Temperatures',
+        'Ext.chart.CartesianChart',
+        'Ext.chart.axis.Numeric',
+        'Ext.chart.axis.Time',
+        'Ext.chart.series.Line'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -21,7 +26,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
         		
                 items: [
@@ -322,7 +327,7 @@ Ext.define('PiClim.view.Main', {
                         flex: 1,
                         store: Ext.create("PiClim.store.Temperatures", {
                             fields: ['time', 'MIN_salon', 'AVG_salon', 'MAX_salon'],
-                            autoLoad: true
+                            autoLoad: false
                         }),
                         axes: [
                             {
