@@ -345,11 +345,14 @@ Ext.define('PiClim.view.Main', {
                                 maximum: 40
                             }, 
                             {
+                                name: 'timeAxis',
                                 type: 'time',
                                 position: 'bottom',
                                 fields: ['time'],
+                                
                                 fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -7),
                                 toDate: new Date(),
+                                
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TIME,
                                     fontSize: 15
@@ -377,11 +380,7 @@ Ext.define('PiClim.view.Main', {
                                 path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
                                 stroke: 'blue',
                                 lineWidth: 0
-                            }/*,
-                            
-                            aggregator: {
-                                strategy: 'time'
-                            }*/
+                            }
                         }]
                     }
                 ]

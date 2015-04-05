@@ -38,6 +38,7 @@ Ext.define('PiClim.controller.MainLogin', {
             usersList: 'main [name=users] list',
 
             temperaturesChart: 'main [name=temperatures] chart',
+            temperaturesChartTimeAxis: 'main [name=temperatures] chart [name=timeAxis]',
 
             settingsTab: 'main [name=settings]',
             settingsUpdateButton: 'main [name=settings] [name=update]'
@@ -57,6 +58,8 @@ Ext.define('PiClim.controller.MainLogin', {
         	'userButtonLogin': { 'tap': 'onUserConnect' },
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
+            
+            'temperaturesChart': { 'itemswipe': 'onGraphSwiped' },
         	
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
@@ -402,5 +405,11 @@ Ext.define('PiClim.controller.MainLogin', {
         	Ext.Msg.alert(I18n.MAIN_AUTHENTICATION_FAILURE_TITLE, I18n.MAIN_AUTHENTICATION_FAILURE_TEXT, this._reload, this);
         	throw "Authentication failure"; 
     	}
+    },
+    
+    onGraphSwiped: function(series, item, event)
+    {
+        debugger
+        this.getTemperaturesChartTimeAxis().setFromDate
     }
 });
