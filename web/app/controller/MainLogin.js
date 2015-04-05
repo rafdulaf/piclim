@@ -36,7 +36,9 @@ Ext.define('PiClim.controller.MainLogin', {
             
             usersTab: 'main [name=users]',
             usersList: 'main [name=users] list',
-            
+
+            temperaturesChart: 'main [name=temperatures] chart',
+
             settingsTab: 'main [name=settings]',
             settingsUpdateButton: 'main [name=settings] [name=update]'
         },
@@ -249,7 +251,9 @@ Ext.define('PiClim.controller.MainLogin', {
     {
     	this.getUsersList().getStore().getProxy()._url = PiClim.app.url + '/' + this.getUsersList().getStore().getProxy().initialConfig.url;
     	this.getUsersList().getStore().load();
-    	
+
+        this.getTemperaturesChart().getStore().load();
+
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
     	this.getMain().getTabBar().getItems().get(2).hide();
