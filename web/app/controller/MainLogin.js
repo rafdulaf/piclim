@@ -59,7 +59,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
             
-            'temperaturesChart': { 'itemswipe': 'onGraphSwiped' },
+            'temperaturesChart': { 'tap': 'onGraphSwiped' },
         	
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
