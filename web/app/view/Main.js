@@ -428,7 +428,7 @@ Ext.define('PiClim.view.Main', {
                 		        {
                 		        	xtype: 'list',
                 		        	store: {
-                		        		autoLoad: true,
+                		        		autoLoad: false,
                 		        		model: 'PiClim.model.User',
                 		        		proxy: {
                 		        			type: 'ajax',
