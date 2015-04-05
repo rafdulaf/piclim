@@ -410,6 +410,7 @@ Ext.define('PiClim.controller.MainLogin', {
     onGraphSwiped: function(series, item, event)
     {
         debugger
+        alert("a")
         this.getTemperaturesChartTimeAxis().setFromDate
     }
 });
