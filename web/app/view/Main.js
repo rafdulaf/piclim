@@ -350,7 +350,7 @@ Ext.define('PiClim.view.Main', {
                                 position: 'bottom',
                                 fields: ['time'],
                                 
-                                fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -7),
+                                fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -3.5),
                                 toDate: new Date(),
                                 
                                 title: {
