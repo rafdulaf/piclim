@@ -15,7 +15,7 @@
         $user = getCurrentUser();
         
         global $TEMP_COLORS;
-        echo "{ authenticate: true, login: '" . $user['login'] . "', email: '" . $user['email'] . "', fullname: '" . $user['fullname'] . "', remember_token:'" . $user['remember_token'] . "', temperatures:'".json_encode($TEMP_COLORS)." }";
+        echo "{ authenticate: true, login: '" . $user['login'] . "', email: '" . $user['email'] . "', fullname: '" . $user['fullname'] . "', remember_token:'" . $user['remember_token'] . "', temperatures: ".json_encode($TEMP_COLORS)." }";
     }
 ?>
     
