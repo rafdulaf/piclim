@@ -256,11 +256,11 @@ Ext.define('PiClim.controller.MainLogin', {
     	this.getUsersList().getStore().load();
 
         var fields = ['time'];
-        for (var i in temperatures) { fields.push['MIN_'+i]; fields.push['AVG_'+i]; fields.push['MAX_'+i]; }
+        for (var i in temperatures) { fields.push('MIN_'+i); fields.push('AVG_'+i); fields.push('MAX_'+i); }
         this.getTemperaturesChart().getStore().getModel().setFields(fields);
 
         var fields = [];
-        for (var i in temperatures) { fields.push['MIN_'+i]; fields.push['AVG_'+i]; fields.push['MAX_'+i]; }
+        for (var i in temperatures) { fields.push('MIN_'+i); fields.push('AVG_'+i); fields.push('MAX_'+i); }
         this.getTemperaturesChart().getAxes()[0].setFields(fields);
         
         var series = [];
