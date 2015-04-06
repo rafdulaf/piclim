@@ -1,5 +1,4 @@
 <?php
-	include 'devmode.php';
     include 'sql.php';
 
    	session_start();
