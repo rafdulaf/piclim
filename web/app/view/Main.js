@@ -326,14 +326,14 @@ Ext.define('PiClim.view.Main', {
                         xtype: 'chart',
                         flex: 1,
                         store: Ext.create("PiClim.store.Temperatures", {
-                            fields: ['time', 'MIN_salon', 'AVG_salon', 'MAX_salon'],
+                            fields: ['time'],
                             autoLoad: false
                         }),
                         axes: [
                             {
                                 type: 'numeric',
                                 position: 'left',
-                                fields: ['MIN_salon', 'AVG_salon', 'MAX_salon'],
+                                fields: [],
                                 
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TEMP,
@@ -362,26 +362,7 @@ Ext.define('PiClim.view.Main', {
                                     axisLine: true
                                 }
                             }
-                        ],
-                        series: [{
-                            type: 'line',
-                            xField: 'time',
-                            yField: 'MIN_salon',
-                            
-                            highlight: {
-                                size: 7,
-                                radius: 7
-                            },
-                            style: {
-                                stroke: 'rgb(143,203,203)'
-                            },
-                            marker: {
-                                type: 'path',
-                                path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
-                                stroke: 'blue',
-                                lineWidth: 0
-                            }
-                        }]
+                        ]
                     }
                 ]
             },

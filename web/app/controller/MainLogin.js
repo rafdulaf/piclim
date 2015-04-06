@@ -158,7 +158,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         else
         {
-    		this._userLoginSuccess(object.authenticated);
+    		this._userLoginSuccess(object.authenticated, object.temperatures);
         }
     },
     _loginFail: function()
@@ -250,11 +250,67 @@ Ext.define('PiClim.controller.MainLogin', {
     	    failure: Ext.bind(this._userLoginFail, this)
     	});
     },
-    _userLoginSuccess: function(fullname)
+    _userLoginSuccess: function(fullname, temperatures)
     {
     	this.getUsersList().getStore().getProxy()._url = PiClim.app.url + '/' + this.getUsersList().getStore().getProxy().initialConfig.url;
     	this.getUsersList().getStore().load();
 
+        var fields = ['time'];
+        for (var i in temperatures) { fields.push['MIN_'+i]; fields.push['AVG_'+i]; fields.push['MAX_'+i]; }
+        this.getTemperaturesChart().getStore().model.setFields(fields);
+
+        var fields = [];
+        for (var i in temperatures) { fields.push['MIN_'+i]; fields.push['AVG_'+i]; fields.push['MAX_'+i]; }
+        this.getTemperaturesChart().getAxes().setFields(fields);
+        
+        var series = [];
+        for (var i in temperatures) 
+        { 
+            series.push({
+                type: 'line',
+                xField: 'time',
+                yField: 'MIN_' + i,
+                
+                highlight: { size: 7, radius: 7 },
+                style: { stroke: temperatures[i] },
+                marker: {
+                    type: 'path',
+                    path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
+                    stroke: temperatures[i],
+                    lineWidth: 0
+                }
+            });
+            series.push({
+                type: 'line',
+                xField: 'time',
+                yField: 'AVG_' + i,
+                
+                highlight: { size: 7, radius: 7 },
+                style: { stroke: temperatures[i] },
+                marker: {
+                    type: 'path',
+                    path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
+                    stroke: temperatures[i],
+                    lineWidth: 0
+                }
+            });
+            series.push({
+                type: 'line',
+                xField: 'time',
+                yField: 'MAX_' + i,
+                
+                highlight: { size: 7, radius: 7 },
+                style: { stroke: temperatures[i] },
+                marker: {
+                    type: 'path',
+                    path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
+                    stroke: temperatures[i],
+                    lineWidth: 0
+                }
+            });
+        }
+        this.getTemperaturesChart().setSeries(series);
+        
         this.getTemperaturesChart().getStore().load();
 
     	this.getMain().getTabBar().getItems().get(0).hide();
@@ -294,7 +350,7 @@ Ext.define('PiClim.controller.MainLogin', {
     		}
     		this.localStore.sync();
     		
-    		this._userLoginSuccess(object.fullname);
+    		this._userLoginSuccess(object.fullname, object.temperatures);
     	}
     },
     _userLoginFail: function()
