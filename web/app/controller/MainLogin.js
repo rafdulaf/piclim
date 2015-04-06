@@ -251,13 +251,14 @@ Ext.define('PiClim.controller.MainLogin', {
     	});
     },
     _userLoginSuccess: function(fullname, temperatures)
-    {debugger
+    {
     	this.getUsersList().getStore().getProxy()._url = PiClim.app.url + '/' + this.getUsersList().getStore().getProxy().initialConfig.url;
     	this.getUsersList().getStore().load();
 
         var fields = ['time'];
         for (var i in temperatures) { fields.push('MIN_'+i); fields.push('AVG_'+i); fields.push('MAX_'+i); }
         this.getTemperaturesChart().getStore().getModel().setFields(fields);
+        this.getTemperaturesChart().getStore().getModel().getFields().isDirty = true;
 
         var fields = [];
         for (var i in temperatures) { fields.push('MIN_'+i); fields.push('AVG_'+i); fields.push('MAX_'+i); }
