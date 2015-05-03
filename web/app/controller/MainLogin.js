@@ -499,6 +499,6 @@ Ext.define('PiClim.controller.MainLogin', {
     
     onGraphRedraw: function()
     {
-        this.task.delay(300, this.getTemperaturesChart().getStore().load, this.getTemperaturesChart().getStore()); 
+        this.task.delay(1000, this.getTemperaturesChart().getStore().load, this.getTemperaturesChart().getStore()); 
     }
 });
