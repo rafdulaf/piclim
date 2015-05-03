@@ -313,14 +313,14 @@ Ext.define('PiClim.controller.MainLogin', {
         this.getTemperaturesChart().setSeries(series);
         
         this.getTemperaturesChart().getStore().on('beforeload', function(store, operation) {
-            var min = Math.round(this.getTemperaturesChartTimeAxis().getFromDate().getTime()/1000);
-            var max = Math.round(this.getTemperaturesChartTimeAxis().getToDate().getTime()/1000);
+            var min = this.getTemperaturesChartTimeAxis().getFromDate().getTime();
+            var max = this.getTemperaturesChartTimeAxis().getToDate().getTime();
             var range = max - min;
             var visibleRange = this.getTemperaturesChartTimeAxis().getVisibleRange();
             
             operation.setParams({ 
-                fromDate: min + range * visibleRange[0],
-                toDate: min + range * visibleRange[1]
+                fromDate: Math.round((min + range * visibleRange[0])/1000),
+                toDate: Math.round((min + range * visibleRange[1])/1000)
             });
         }, this);
         this.getTemperaturesChart().getStore().load();        
