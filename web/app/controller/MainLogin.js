@@ -3,7 +3,8 @@ Ext.define('PiClim.controller.MainLogin', {
     
     requires: [
          'Ext.Ajax',
-         'Ext.data.Store'
+         'Ext.data.Store',
+         'Ext.util.DelayedTask'
     ],
     
     config: {
@@ -330,7 +331,7 @@ Ext.define('PiClim.controller.MainLogin', {
                     && this._oldRanges.fromDate == operation.getParams().fromDate 
                     && this._oldRanges.toDate == operation.getParams().toDate)
             {
-                alert('avoid reload')
+                alert('avoid relad')
                 return false;
             }
             alert('reload')

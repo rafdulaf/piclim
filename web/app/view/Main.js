@@ -11,7 +11,8 @@ Ext.define('PiClim.view.Main', {
         'Ext.chart.CartesianChart',
         'Ext.chart.axis.Numeric',
         'Ext.chart.axis.Time',
-        'Ext.chart.series.Line'
+        'Ext.chart.series.Line',
+        'Ext.chart.interactions.PanZoom'
     ],
     config: {
         tabBarPosition: 'bottom',
