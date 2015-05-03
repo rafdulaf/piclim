@@ -26,7 +26,7 @@
 		global $SONDES;
 		
 		// Let us export at the json format
-		$cmd = "rrdtool xport --start ".(3600*24*365*5)." --end now --json ";
+		$cmd = "rrdtool xport --start ".(-3600*24*365*5)." --end now --json ";
 		
 		$i = 1;
         foreach ($SONDES as $name => $Sonde)
