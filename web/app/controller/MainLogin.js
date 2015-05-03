@@ -324,12 +324,15 @@ Ext.define('PiClim.controller.MainLogin', {
             });
             
             // do not relaunch uselessly
-            if (this._oldRanges && Ext.Object.toQueryString(this._oldRanges) == Ext.Object.toQueryString(operation.getParams()))
+            if (this._oldRanges 
+                    && this._oldRanges.fromDate = operation.getParams().fromDate 
+                    && this._oldRanges.toDate = operation.getParams().toDate)
             {
-            alert(Ext.Object.toQueryString(this._oldRanges))
+                alert('yo')
                 return false;
             }
             
+                alert('no')
             this._oldRanges = operation.getParams();
         }, this);
         this.getTemperaturesChart().getStore().load();        
