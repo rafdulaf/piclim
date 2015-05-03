@@ -320,11 +320,12 @@ Ext.define('PiClim.view.Main', {
                         items: [
                                 {
                                     align: 'right',
+                                    icon: 'resources/img/zoom_out.png',
                                     name: 'zoomout'
                                 },
                                 {
                                     align: 'right',
-                                    icon: 'resources/img/zoom-in.png',
+                                    icon: 'resources/img/zoom_in.png',
                                     name: 'zoomin'
                                 },
                                 {
