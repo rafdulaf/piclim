@@ -324,6 +324,7 @@ Ext.define('PiClim.controller.MainLogin', {
             });
             
             // do not relaunch uselessly
+            alert(Ext.Object.toQueryString(this._oldRanges))
             if (this._oldRanges && Ext.Object.toQueryString(this._oldRanges) == Ext.Object.toQueryString(operation.getParams()))
             {
                 return false;
