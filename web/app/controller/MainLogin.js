@@ -310,7 +310,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         this.getTemperaturesChart().setSeries(series);
         
-        this._setTemperatures();        
+        this.getTemperaturesChart().load();        
 
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
