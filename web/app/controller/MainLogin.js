@@ -59,7 +59,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
             
-            'temperaturesChart': { 'tap': 'onGraphSwiped' },
+//            'temperaturesChart': { 'tap': 'onGraphSwiped' },
         	
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
@@ -462,12 +462,5 @@ Ext.define('PiClim.controller.MainLogin', {
         	Ext.Msg.alert(I18n.MAIN_AUTHENTICATION_FAILURE_TITLE, I18n.MAIN_AUTHENTICATION_FAILURE_TEXT, this._reload, this);
         	throw "Authentication failure"; 
     	}
-    },
-    
-    onGraphSwiped: function(series, item, event)
-    {
-        debugger
-        alert("a")
-        this.getTemperaturesChartTimeAxis().setFromDate
     }
 });

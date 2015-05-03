@@ -316,7 +316,14 @@ Ext.define('PiClim.view.Main', {
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: I18n.MAIN_TEMPERATURES_TITLE_LONG
+                        title: I18n.MAIN_TEMPERATURES_TITLE_LONG,
+                        items: [
+                                {
+                                    iconCls: 'arrow_right',
+                                    align: 'right',
+                                    name: 'goright'
+                                }
+                        ]
                     },
                     {
                         xtype: 'component',
