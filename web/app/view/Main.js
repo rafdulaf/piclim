@@ -372,8 +372,8 @@ Ext.define('PiClim.view.Main', {
                                 position: 'bottom',
                                 fields: ['time'],
                                 
-                                fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -3.5),
-                                toDate: new Date(),
+                                //fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -3.5),
+                                //toDate: new Date(),
                                 
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TIME,
