@@ -274,17 +274,39 @@ Ext.define('PiClim.controller.MainLogin', {
             series.push({
                 type: 'line',
                 xField: 'time',
-                yField: 'AVG_' + i,
-                title: i,
+                yField: 'MIN_' + i,
+                
+                showInLegend: false,
                 
                 highlight: { size: 7, radius: 7 },
-                style: { stroke: temperatures[i] },
+                style: { stroke: temperatures[i] }
+            });
+            series.push({
+                type: 'line',
+                xField: 'time',
+                yField: 'AVG_' + i,
+                
+                title: i,
+
+                
+                highlight: { size: 7, radius: 7 },
+                style: { stroke: temperatures[i], lineWidth: 2 },
                 marker: {
                     type: 'path',
                     path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
                     stroke: temperatures[i],
                     lineWidth: 0
                 }
+            });
+            series.push({
+                type: 'line',
+                xField: 'time',
+                yField: 'MAX_' + i,
+                
+                showInLegend: false,
+
+                highlight: { size: 7, radius: 7 },
+                style: { stroke: temperatures[i] }
             });
         }
         this.getTemperaturesChart().setSeries(series);
