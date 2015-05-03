@@ -7,7 +7,7 @@ Ext.define('PiClim.controller.MainLogin', {
     ],
     
     graph: {
-        start: -3*24,   // three days
+        start: -1*24,   // three days
         end: 0          // now
     },
     
@@ -325,7 +325,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         this.getTemperaturesChart().setSeries(series);
         
-        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
 
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
@@ -484,7 +484,7 @@ Ext.define('PiClim.controller.MainLogin', {
         this.graph.end -= move;
         this.graph.start -= move;
         
-        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
     },
     onTemperaturesGoAfter: function()
     {
@@ -493,7 +493,7 @@ Ext.define('PiClim.controller.MainLogin', {
         this.graph.end += move;
         this.graph.start += move;
         
-        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
     },
     onTemperaturesZoomIn: function()
     {
@@ -501,7 +501,7 @@ Ext.define('PiClim.controller.MainLogin', {
         
         this.graph.start += move;
         
-        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
     },
     onTemperaturesZoomOut: function()
     {
@@ -509,6 +509,6 @@ Ext.define('PiClim.controller.MainLogin', {
         
         this.graph.start -= move;
         
-        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
     }
 });
