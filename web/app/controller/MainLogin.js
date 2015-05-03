@@ -59,7 +59,7 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
             
-            'temperaturesChart': { 'redraw': 'onGraphRedraw' },
+            'temperaturesChart': { 'refresh': 'onGraphRedraw' },
             
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
@@ -322,6 +322,14 @@ Ext.define('PiClim.controller.MainLogin', {
                 fromDate: Math.round((min + range * visibleRange[0])/1000),
                 toDate: Math.round((min + range * visibleRange[1])/1000)
             });
+            
+            // do not relaunch uselessly
+            if (this._oldRanges && Ext.Object.toQueryString(this._oldRanges) == Ext.Object.toQueryString(operation.getParams()))
+            {
+                return false;
+            }
+            
+            this._oldRanges = operation.getParams();
         }, this);
         this.getTemperaturesChart().getStore().load();        
 
