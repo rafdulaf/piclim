@@ -514,7 +514,7 @@ Ext.define('PiClim.controller.MainLogin', {
         this.graph.start -= move;
 
         this._setTemperatures();        
-    }
+    },
     _setTemperatures: function()
     {
         this.getTemperaturesChartTimeAxis().fromDate = Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.end);
