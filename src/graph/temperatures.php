@@ -26,7 +26,7 @@
 		global $SONDES;
 		
 		// Let us export at the json format
-		$cmd = "rrdtool xport --start ".(3600*$startDate)." --end ".(3600*$endDate)." --json ";
+		$cmd = "rrdtool xport --start ".(3600*$startDate)." --end ".($endDate == 0 ? "now" : 3600*$endDate)." --json ";
 		
 		$i = 1;
         foreach ($SONDES as $name => $Sonde)
