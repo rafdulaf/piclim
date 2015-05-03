@@ -68,7 +68,9 @@ Ext.define('PiClim.controller.MainLogin', {
     //called when the Application is launched, remove if not needed
     launch: function(app) {
     	PiClim.app.isWeb = true;
-    	
+
+        this.task = Ext.create('Ext.util.DelayedTask');
+        
     	this.localStore = Ext.create('Ext.data.Store', {
     	      model: "PiClim.model.Main"
     	});
@@ -328,11 +330,9 @@ Ext.define('PiClim.controller.MainLogin', {
                     && this._oldRanges.fromDate == operation.getParams().fromDate 
                     && this._oldRanges.toDate == operation.getParams().toDate)
             {
-                alert('yo')
                 return false;
             }
             
-                alert('no')
             this._oldRanges = operation.getParams();
         }, this);
         this.getTemperaturesChart().getStore().load();        
@@ -489,6 +489,6 @@ Ext.define('PiClim.controller.MainLogin', {
     
     onGraphRedraw: function()
     {
-        this.getTemperaturesChart().getStore().load();
+        task.delay(300, this.getTemperaturesChart().getStore().load, this.getTemperaturesChart().getStore()); 
     }
 });
