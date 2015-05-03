@@ -311,11 +311,10 @@ Ext.define('PiClim.controller.MainLogin', {
         this.getTemperaturesChart().setSeries(series);
         
         this.getTemperaturesChart().getStore().on('beforeload', function(store, operation) {
-            operation.params = { 
-                fromDate: this.getTemperaturesChartTimeAxis().getFromDate().getTime()/1000,
-                toDate: this.getTemperaturesChartTimeAxis().getToDate().getTime()/1000
-            }
-            debugger
+            operation.setParams({ 
+                fromDate: Math.round(this.getTemperaturesChartTimeAxis().getFromDate().getTime()/1000),
+                toDate: Math.round(this.getTemperaturesChartTimeAxis().getToDate().getTime()/1000)
+            });
         }, this);
         this.getTemperaturesChart().getStore().load();        
 
