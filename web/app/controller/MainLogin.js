@@ -517,8 +517,8 @@ Ext.define('PiClim.controller.MainLogin', {
     },
     _setTemperatures: function()
     {
-        this.getTemperaturesChartTimeAxis().setFromDate(Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.end));
-        this.getTemperaturesChartTimeAxis().setToDate(Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.start)); 
+        this.getTemperaturesChartTimeAxis().setFromDate(Ext.Date.add(new Date(), Ext.Date.HOUR, this.graph.end));
+        this.getTemperaturesChartTimeAxis().setToDate(Ext.Date.add(new Date(), Ext.Date.HOUR, this.graph.start)); 
         this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
         //this.getTemperaturesChart().redraw();
     }
