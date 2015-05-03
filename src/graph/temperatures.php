@@ -21,12 +21,12 @@
 		return $cmd;
 	}
 	
-	function temperaturesJSON()
+	function temperaturesJSON($startDate, $endDate)
 	{
 		global $SONDES;
 		
 		// Let us export at the json format
-		$cmd = "rrdtool xport --start -300800 --end now --json ";
+		$cmd = "rrdtool xport --start ".(3600*$startDate)." --end ".(3600*$endDate)." --json ";
 		
 		$i = 1;
         foreach ($SONDES as $name => $Sonde)
