@@ -520,5 +520,6 @@ Ext.define('PiClim.controller.MainLogin', {
         this.getTemperaturesChartTimeAxis().fromDate = Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.end);
         this.getTemperaturesChartTimeAxis().toDate = Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.start); 
         this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
+        this.getTemperaturesChart().redraw();
     }
 });
