@@ -4,7 +4,8 @@ Ext.define('PiClim.controller.MainLogin', {
     requires: [
          'Ext.Ajax',
          'Ext.data.Store',
-         'Ext.util.DelayedTask'
+         'Ext.util.DelayedTask',
+         'PiClim.store.Temperatures'
     ],
     
     config: {
