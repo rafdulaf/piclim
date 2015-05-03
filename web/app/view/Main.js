@@ -319,6 +319,11 @@ Ext.define('PiClim.view.Main', {
                         title: I18n.MAIN_TEMPERATURES_TITLE_LONG,
                         items: [
                                 {
+                                    iconCls: 'arrow_left',
+                                    align: 'right',
+                                    name: 'goleft'
+                                },
+                                {
                                     align: 'right',
                                     icon: 'resources/img/zoom_out.png',
                                     name: 'zoomout'
@@ -327,11 +332,6 @@ Ext.define('PiClim.view.Main', {
                                     align: 'right',
                                     icon: 'resources/img/zoom_in.png',
                                     name: 'zoomin'
-                                },
-                                {
-                                    iconCls: 'arrow_left',
-                                    align: 'right',
-                                    name: 'goleft'
                                 },
                                 {
                                     iconCls: 'arrow_right',

@@ -6,6 +6,11 @@ Ext.define('PiClim.controller.MainLogin', {
          'Ext.data.Store'
     ],
     
+    graph: {
+        start: -3*24,   // three days
+        end: 0          // now
+    },
+    
     config: {
         refs: {
         	main: 'main',
@@ -37,6 +42,10 @@ Ext.define('PiClim.controller.MainLogin', {
             usersTab: 'main [name=users]',
             usersList: 'main [name=users] list',
 
+            temperaturesGoBefore: 'main [name=temperatures] [name=goleft]',
+            temperaturesZoomOut: 'main [name=temperatures] [name=zoomout]',
+            temperaturesZoomIn: 'main [name=temperatures] [name=zoomin]',
+            temperaturesGoAfter: 'main [name=temperatures] [name=goright]',
             temperaturesChart: 'main [name=temperatures] chart',
             temperaturesChartTimeAxis: 'main [name=temperatures] chart [name=timeAxis]',
 
@@ -59,6 +68,10 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
             
+            'temperaturesGoBefore': { 'tap': 'onTemperaturesGoBefore' },
+            'temperaturesGoAfter': { 'tap': 'onTemperaturesGoAfter' },
+            'temperaturesZoomIn': { 'tap': 'onTemperaturesZoomIn' },
+            'temperaturesZoomOut': { 'tap': 'onTemperaturesZoomOut' },
 //            'temperaturesChart': { 'tap': 'onGraphSwiped' },
         	
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
@@ -312,7 +325,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         this.getTemperaturesChart().setSeries(series);
         
-        this.getTemperaturesChart().getStore().load();
+        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
 
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
@@ -462,5 +475,40 @@ Ext.define('PiClim.controller.MainLogin', {
         	Ext.Msg.alert(I18n.MAIN_AUTHENTICATION_FAILURE_TITLE, I18n.MAIN_AUTHENTICATION_FAILURE_TEXT, this._reload, this);
         	throw "Authentication failure"; 
     	}
+    },
+    
+    onTemperaturesGoBefore: function()
+    {
+        var move = (this.graph.end - this.graph.start) / 3;
+        
+        this.graph.end -= move;
+        this.graph.start -= move;
+        
+        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+    },
+    onTemperaturesGoAfter: function()
+    {
+        var move = (this.graph.end - this.graph.start) / 3;
+        
+        this.graph.end += move;
+        this.graph.start += move;
+        
+        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+    },
+    onTemperaturesZoomIn: function()
+    {
+        var move = (this.graph.end - this.graph.start) / 3;
+        
+        this.graph.start += move;
+        
+        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
+    },
+    onTemperaturesZoomOut: function()
+    {
+        var move = (this.graph.end - this.graph.start) / 2;
+        
+        this.graph.start -= move;
+        
+        this.getTemperaturesChart().getStore().load({ startDate: this.graph.start, endDate: this.graph.end });
     }
 });
