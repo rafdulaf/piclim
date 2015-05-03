@@ -7,7 +7,7 @@ Ext.define('PiClim.controller.MainLogin', {
     ],
     
     graph: {
-        start: -1*24,   // three days
+        start: -1*24,   // 1 day
         end: 0          // now
     },
     
@@ -518,6 +518,7 @@ Ext.define('PiClim.controller.MainLogin', {
     _setTemperatures: function()
     {
         this.getTemperaturesChartTimeAxis().setFromDate(Ext.Date.add(new Date(), Ext.Date.HOUR, this.graph.end));
+        console.info(this.getTemperaturesChartTimeAxis().getFromDate());
         this.getTemperaturesChartTimeAxis().setToDate(Ext.Date.add(new Date(), Ext.Date.HOUR, this.graph.start)); 
         this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
         //this.getTemperaturesChart().redraw();
