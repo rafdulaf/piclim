@@ -518,7 +518,7 @@ Ext.define('PiClim.controller.MainLogin', {
     _setTemperatures: function()
     {
         this.getTemperaturesChartTimeAxis().setMinimum(Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.end));
-        this.getTemperaturesChartTimeAxis().setMaxium(Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.start)); 
+        this.getTemperaturesChartTimeAxis().setMaximum(Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.start)); 
         this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
         //this.getTemperaturesChart().redraw();
     }
