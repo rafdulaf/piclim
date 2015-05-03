@@ -3,5 +3,5 @@
 
     include '../../src/graph/temperatures.php';
     
-    echo temperaturesJSON($_REQUEST['startDate'], $_REQUEST['endDate']);
+    echo temperaturesJSON();
 ?>
