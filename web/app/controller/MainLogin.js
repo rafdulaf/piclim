@@ -313,9 +313,14 @@ Ext.define('PiClim.controller.MainLogin', {
         this.getTemperaturesChart().setSeries(series);
         
         this.getTemperaturesChart().getStore().on('beforeload', function(store, operation) {
+            var min = Math.round(this.getTemperaturesChartTimeAxis().getFromDate().getTime()/1000);
+            var max = Math.round(this.getTemperaturesChartTimeAxis().getToDate().getTime()/1000);
+            var range = max - min;
+            var visibleRange = this.getTemperaturesChartTimeAxis().getVisibleRange();
+            
             operation.setParams({ 
-                fromDate: Math.round(this.getTemperaturesChartTimeAxis().getFromDate().getTime()/1000),
-                toDate: Math.round(this.getTemperaturesChartTimeAxis().getToDate().getTime()/1000)
+                fromDate: min + range * visibleRange[0],
+                toDate: min + range * visibleRange[1]
             });
         }, this);
         this.getTemperaturesChart().getStore().load();        
@@ -472,6 +477,6 @@ Ext.define('PiClim.controller.MainLogin', {
     
     onGraphRedraw: function()
     {
-        alert('aa')
+        this.getTemperaturesChart().getStore().load();
     }
 });
