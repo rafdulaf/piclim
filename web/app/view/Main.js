@@ -329,6 +329,21 @@ Ext.define('PiClim.view.Main', {
                             fields: ['time'],
                             autoLoad: false
                         }),
+
+                        interactions: [{
+                            type: 'panzoom',
+                            axes: {
+                                "left": {
+                                    allowZoom: false,
+                                    allowPan: true
+                                },
+                                "bottom": {
+                                    allowZoom: true,
+                                    allowPan: true
+                                }
+                            }
+                        }],
+                        
                         axes: [
                             {
                                 type: 'numeric',
@@ -352,20 +367,6 @@ Ext.define('PiClim.view.Main', {
                                 
                                 fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -1),
                                 toDate: new Date(),
-                                
-                                interactions: [{
-                                    type: 'panzoom',
-                                    axes: {
-                                        left: {
-                                            allowZoom: false,
-                                            allowPan: true
-                                        },
-                                        bottom: {
-                                            allowZoom: true,
-                                            allowPan: true
-                                        }
-                                    }
-                                }],
                                 
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TIME,
