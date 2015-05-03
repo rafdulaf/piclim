@@ -59,6 +59,8 @@ Ext.define('PiClim.controller.MainLogin', {
         	
         	'home2Disconnect': { 'tap': 'onDisconnect' },
             
+            'temperaturesChart': { 'redraw': 'onGraphRedraw' },
+            
         	'settingsUpdateButton' : { 'tap': 'onUpdate' }
         }
     },
@@ -466,5 +468,10 @@ Ext.define('PiClim.controller.MainLogin', {
         	Ext.Msg.alert(I18n.MAIN_AUTHENTICATION_FAILURE_TITLE, I18n.MAIN_AUTHENTICATION_FAILURE_TEXT, this._reload, this);
         	throw "Authentication failure"; 
     	}
+    },
+    
+    onGraphRedraw: function()
+    {
+        alert('aa')
     }
 });
