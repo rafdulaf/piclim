@@ -330,9 +330,10 @@ Ext.define('PiClim.controller.MainLogin', {
                     && this._oldRanges.fromDate == operation.getParams().fromDate 
                     && this._oldRanges.toDate == operation.getParams().toDate)
             {
+                alert('avoid reload')
                 return false;
             }
-            
+            alert('reload')
             this._oldRanges = operation.getParams();
         }, this);
         this.getTemperaturesChart().getStore().load();        
