@@ -274,8 +274,10 @@ Ext.define('PiClim.controller.MainLogin', {
             series.push({
                 type: 'candlestick',
                 xField: 'time',
+                closeField: 'MIN_' + i,
                 lowField: 'MIN_' + i,
                 highField: 'MAX_' + i,
+                openField: 'MAX_' + i,
                 
                 highlight: { size: 7, radius: 7 },
                 style: { stroke: temperatures[i] },
