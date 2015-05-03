@@ -325,8 +325,8 @@ Ext.define('PiClim.controller.MainLogin', {
             
             // do not relaunch uselessly
             if (this._oldRanges 
-                    && this._oldRanges.fromDate = operation.getParams().fromDate 
-                    && this._oldRanges.toDate = operation.getParams().toDate)
+                    && this._oldRanges.fromDate == operation.getParams().fromDate 
+                    && this._oldRanges.toDate == operation.getParams().toDate)
             {
                 alert('yo')
                 return false;
