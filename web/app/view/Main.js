@@ -40,7 +40,7 @@ Ext.define('PiClim.view.Main', {
                 		xtype: 'component',
                 		html: I18n.MAIN_WELCOME_TEXT
                 	}
-                ],
+                ]
 
             },
             
@@ -54,7 +54,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
         		
                 items: [
@@ -189,8 +189,7 @@ Ext.define('PiClim.view.Main', {
                 		        }
                 		]
                 	}
-                ],
-
+                ]
             },
             
             {
@@ -203,7 +202,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
         		
                 items: [
@@ -461,7 +460,7 @@ Ext.define('PiClim.view.Main', {
                 scrollable: null,
 
         		layout: {
-        			type: 'vbox',
+        			type: 'vbox'
         		},
 
         		items: [
@@ -496,7 +495,7 @@ Ext.define('PiClim.view.Main', {
                 		        {
                 		        	xtype: 'button',
                 		        	name: 'update',
-                		        	text: I18n.MAIN_SETTINGS_OPTIONS_UPDATE_TITLE,
+                		        	text: I18n.MAIN_SETTINGS_OPTIONS_UPDATE_TITLE
                 		        }
                 		]
                 	}
