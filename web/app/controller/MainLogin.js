@@ -272,26 +272,10 @@ Ext.define('PiClim.controller.MainLogin', {
         for (var i in temperatures) 
         { 
             series.push({
-                type: 'candlestick',
-                xField: 'time',
-                closeField: 'MIN_' + i,
-                lowField: 'MIN_' + i,
-                highField: 'MAX_' + i,
-                openField: 'MAX_' + i,
-                
-                highlight: { size: 7, radius: 7 },
-                style: { stroke: temperatures[i] },
-                marker: {
-                    type: 'path',
-                    path: ['M', -2, 0, 0, 2, 2, 0, 0, -2, 'Z'],
-                    stroke: temperatures[i],
-                    lineWidth: 0
-                }
-            });
-            series.push({
                 type: 'line',
                 xField: 'time',
                 yField: 'AVG_' + i,
+                title: i,
                 
                 highlight: { size: 7, radius: 7 },
                 style: { stroke: temperatures[i] },
