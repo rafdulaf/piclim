@@ -330,6 +330,10 @@ Ext.define('PiClim.view.Main', {
                             autoLoad: false
                         }),
 
+                        legend: {
+                            position: 'bottom'
+                        },
+                        
                         interactions: [{
                             type: 'panzoom',
                             axes: {
