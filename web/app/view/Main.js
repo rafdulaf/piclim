@@ -356,8 +356,10 @@ Ext.define('PiClim.view.Main', {
                                 },
                                 grid: true,
                                 
-                                minimum: -10,
-                                maximum: 40
+                                visibleRange: [0.4, 0.8],
+                                
+                                minimum: -60,
+                                maximum: 60
                             }, 
                             {
                                 name: 'timeAxis',
@@ -365,8 +367,9 @@ Ext.define('PiClim.view.Main', {
                                 position: 'bottom',
                                 fields: ['time'],
                                 
-                                fromDate: Ext.Date.add(new Date(), Ext.Date.DAY, -1),
+                                fromDate: Ext.Date.add(new Date(), Ext.Date.YEAR, -5),
                                 toDate: new Date(),
+                                visibleRange: [0,0005479, 1],
                                 
                                 title: {
                                     text: I18n.MAIN_TEMPERATURES_AXE_TIME,
