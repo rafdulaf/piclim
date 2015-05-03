@@ -321,6 +321,7 @@ Ext.define('PiClim.controller.MainLogin', {
             var max = this.getTemperaturesChartTimeAxis().getToDate().getTime();
             var range = max - min;
             var visibleRange = this.getTemperaturesChartTimeAxis().getVisibleRange();
+            visibleRange = [visibleRange[0], visibleRange[1]];
             
             // lets wide visible range to preload data
             var visibleRangeSize = visibleRange[1] - visibleRange[0];
