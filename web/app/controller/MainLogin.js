@@ -47,7 +47,7 @@ Ext.define('PiClim.controller.MainLogin', {
             temperaturesZoomIn: 'main [name=temperatures] [name=zoomin]',
             temperaturesGoAfter: 'main [name=temperatures] [name=goright]',
             temperaturesChart: 'main [name=temperatures] chart',
-            temperaturesChartTimeAxis: 'main [name=temperatures] chart [name=timeAxis]',
+            temperaturesChartTimeAxis: 'main [name=temperatures] chart [name=timeAxis]',           
 
             settingsTab: 'main [name=settings]',
             settingsUpdateButton: 'main [name=settings] [name=update]'
@@ -325,7 +325,7 @@ Ext.define('PiClim.controller.MainLogin', {
         }
         this.getTemperaturesChart().setSeries(series);
         
-        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
+        this._setTemperatures();        
 
     	this.getMain().getTabBar().getItems().get(0).hide();
     	this.getMain().getTabBar().getItems().get(1).hide();
@@ -484,7 +484,7 @@ Ext.define('PiClim.controller.MainLogin', {
         this.graph.end -= move;
         this.graph.start -= move;
         
-        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
+        this._setTemperatures();        
     },
     onTemperaturesGoAfter: function()
     {
@@ -493,22 +493,32 @@ Ext.define('PiClim.controller.MainLogin', {
         this.graph.end += move;
         this.graph.start += move;
         
-        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
+        if (this.graph.end > 0)
+        {
+            this.graph.start -= this.graph.end;
+            this.graph.end = 0;
+        }
+        
+        this._setTemperatures();        
     },
     onTemperaturesZoomIn: function()
     {
         var move = (this.graph.end - this.graph.start) / 3;
-        
         this.graph.start += move;
         
-        this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
+        this._setTemperatures();        
     },
     onTemperaturesZoomOut: function()
     {
         var move = (this.graph.end - this.graph.start) / 2;
-        
         this.graph.start -= move;
-        
+
+        this._setTemperatures();        
+    }
+    _setTemperatures: function()
+    {
+        this.getTemperaturesChartTimeAxis().fromDate = Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.end);
+        this.getTemperaturesChartTimeAxis().toDate = Ext.Date.add(new Date(), Ext.Date.HOUR, -this.graph.start); 
         this.getTemperaturesChart().getStore().load({ params: { startDate: this.graph.start, endDate: this.graph.end } });
     }
 });
